@@ -12,10 +12,10 @@ import {MatChipsModule} from '@angular/material/chips';
  //End of forms imports
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './Component/footer/footer.component';
 import { AboutComponent } from './Component/about/about.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { HomeComponent } from './Component/home/home.component';
@@ -29,11 +29,12 @@ import { SignInComponent } from './Component/sign-in/sign-in.component';
 import {TemplateadminComponent} from './Bootstrap/templateadmin/templateadmin.component';
 import { HttpClientModule } from '@angular/common/http';
 import {ApiServiceService} from './Services/api-service.service';
-import { AdminHeaderComponent } from './Bootstrap/adminPage/admin-header/admin-header.component';
-import { AdminNavComponent } from './Bootstrap/adminPage/admin-nav/admin-nav.component';
-import { ManufacturerComponent } from './Bootstrap/adminPage/manufacturer/manufacturer.component';
-import { DashboardComponent } from './Bootstrap/adminPage/dashboard/dashboard.component';
-import { CreateManuComponent } from './Bootstrap/adminPage/create-manu/create-manu.component';
+import { AdminHeaderComponent } from './adminPage/admin-header/admin-header.component';
+import { AdminNavComponent } from './adminPage/admin-nav/admin-nav.component';
+import { ManufacturerComponent } from './adminPage/manufacturer/manufacturer.component';
+import { DashboardComponent } from './adminPage/dashboard/dashboard.component';
+import { CreateManuComponent } from './adminPage/create-manu/create-manu.component';
+import { HeaderComponent } from './Component/header/header.component';
 
 
 @NgModule({
