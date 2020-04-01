@@ -1,0 +1,16 @@
+input {
+    color: black;
+}
+mat-form-field {
+    margin: .3vw;
+}
+#edit {
+    height: fit-content;
+    width: fit-content;
+}
+td{
+   padding-top: 1vw;
+   margin: auto;
+   border-style: groove;
+   border-top: groove;
+}

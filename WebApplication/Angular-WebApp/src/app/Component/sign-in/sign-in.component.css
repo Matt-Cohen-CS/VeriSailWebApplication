@@ -1,0 +1,33 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+body {
+  margin: auto;
+  width: 100%;
+}
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+.allsign{
+    width: 75%;
+    margin: auto;
+   
+}
+button{
+    width: 75%;
+    margin: auto;
+}
+img {
+  mix-blend-mode: darken;
+}
+p {
+  padding-top: 1vw;
+}

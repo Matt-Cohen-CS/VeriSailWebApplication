@@ -1,0 +1,26 @@
+img {
+    mix-blend-mode: darken;
+    padding-bottom: 2vw;
+    margin: auto;
+    padding-left: 7vw;
+}
+p {
+    padding-top: 2vw;
+    text-align: center;
+}
+body {
+    width: 75%;
+    transform: translate(0%,30%);
+    margin: auto;
+    border-style: groove;
+    height: fit-content;
+}
+
+#float-left{
+ 
+ margin-bottom: 1vw;
+ 
+}
+#float-left a {
+    padding: 2vw;
+}

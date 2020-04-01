@@ -1,0 +1,173 @@
+<body>
+
+    <app-admin-header></app-admin-header>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- App-admin-nav will need this class for it to function correctly -->
+            <app-admin-nav class="col-md-2 d-none d-md-block bg-light sidebar"></app-admin-nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Hello, {{user}}! Welcome to VeriSail</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive" >
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>street</th>
+                                <th>city</th>
+                                <th>state</th>
+                                <th>zip</th>
+                                <th>userID</th>
+                                <th>manufacturerscol</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let man of manu">
+                               
+                                <td>{{man.manufacturerID}}</td>
+                                <td>{{man.manuName}}</td>
+                                <td>{{man.street}}</td>
+                                <td>{{man.city}}</td>
+                                <td>{{man.state}}</td>
+                                <td>{{man.zip}}</td>
+                                <td>{{man.userID}}</td>
+                                <td>{{man.manufacturerscol}}</td>
+                                <td><button type="button"class="btn btn-secondary" id="edit" routerLink="/createManu"(click)="editManu(man.manufacturerID)">Edit</button></td>
+                                
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+                <h2>Please make a selection</h2>
+                <!-- <form id="grid" style="width: fit-content;"> -->
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Example select</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Example select</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- </form>   -->
+                <!-- <form id="grid" style="width: fit-content;"> -->
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Example select</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>h</option>
+                                <option>2</option>
+                                <option>h</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Example select</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- </form>   -->
+                <form [formGroup]="myForm">
+                    Value: {{myForm.value | json}}
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <mat-form-field>
+                                    <input matInput placeholder="manufacturer ID" formControlName="manufacturerID">
+                                
+                                    <mat-error *ngIf="manufacturerID.touched">
+                                        Required field
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="Manufacturer name" formControlName="manuName">
+                                    <mat-error *ngIf="manuName.touched">
+                                        Required field
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="street" formControlName="street">
+                                    <mat-error *ngIf="street.touched">
+                                        Required field
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                     
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col">
+                            <div class="form-group">
+                                <mat-form-field>
+                                    <input matInput placeholder="city" formControlName="city">
+                                    <mat-error *ngIf="city.touched">
+                                        Required field
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>State</mat-label>
+                                    <mat-select formControlName="state">
+                                      <mat-option>None</mat-option>
+                                      <mat-option *ngFor="let state of stateArray" [value]="state">{{state}}</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="state.touched">
+                                        Required field
+                                    </mat-error>
+                                  </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="Zip Code" formControlName="zip">
+                                    <mat-error *ngIf="zip.touched">
+                                        Required field. Please use your five digit Zip-Code
+                                    </mat-error>
+                                    <mat-hint align="end">Only five digit Zip-Codes allowed</mat-hint>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <button mat-raised-button type="submit"[disabled]="myForm.invalid" color="primary" (click)="submitData()">Submit</button>
+                    <hr>       
+                </form>
+            </main>
+        </div>
+    </div>

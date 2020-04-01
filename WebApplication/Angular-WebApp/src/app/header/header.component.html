@@ -1,0 +1,39 @@
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <img src="../../assets/images/CheckMateApps.png" alt="Check Mate Applications" routerLink="/home" id = "homePointer">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">About Us</a>
+        </li>
+        <li class="nav-item dropdown" dropdown>
+          <a class="nav-link dropdown-toggle" dropdownToggle
+          
+          id="navbarDropdown" 
+          role="button" 
+          data-toggle="dropdown" 
+          aria-haspopup="true" 
+          aria-expanded="false">
+            Forms
+          </a>
+          <div class="dropdown-menu" *dropdownMenu
+          aria-labelledby="navbarDropdown" cursor="pointer">
+            <a class="dropdown-item" routerLink="/form">Add a part</a>
+            <a class="dropdown-item" routerLink="/form">Add a Manufacturer</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/form">Add something</a>
+          </div>
+        </li>
+        
+      </ul>
+     <a routerLink="/signin"><button class="btn btn-success">Sign In</button></a>
+     <img src="../../assets/images/ILCA.png" alt="ILCA image">
+    </div>
+  </nav>

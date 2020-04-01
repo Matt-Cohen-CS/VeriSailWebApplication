@@ -1,0 +1,31 @@
+{
+  "name": "verisail",
+  "version": "1.0.0",
+  "description": "Verisail web application to query SQL database with specific APIs built",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matt-Cohen-CS/VeriSail.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mysql",
+    "angular",
+    "IOS",
+    "restAPI"
+  ],
+  "author": "Matt Cohen, Patricia Skora, Victoria Johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matt-Cohen-CS/VeriSail/issues"
+  },
+  "homepage": "https://github.com/Matt-Cohen-CS/VeriSail#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}

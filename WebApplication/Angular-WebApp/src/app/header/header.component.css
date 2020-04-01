@@ -1,0 +1,43 @@
+.headerNav li {
+    cursor: pointer;
+}
+#homePointer {
+    cursor: pointer;
+    mix-blend-mode: darken;
+    height: 4em;
+}
+img{
+    mix-blend-mode: darken;
+    height: 4em;
+}
+.sign {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: gray;
+   
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    
+  }
+.sign:hover{
+    background-color: rgb(9, 255, 0)
+}
+.sign:active{
+    background-color: rgb(9, 255, 0);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+.dropdown-item:hover{
+    background-color:#d5d4d4;
+}
+.dropdown-item:active{
+    background-color:#d5d4d4;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

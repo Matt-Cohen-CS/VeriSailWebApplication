@@ -1,0 +1,16 @@
+#carousel {
+    margin: auto;
+    width: 85%;
+    border-style: inset;
+    text-align: center;
+    background-color:inherit;
+    margin-bottom: 30px;
+}
+
+img {
+   display: block;
+   width: 100%;
+   height: 360px;
+   margin: auto;
+
+}

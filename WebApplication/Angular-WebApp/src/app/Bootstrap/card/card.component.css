@@ -1,0 +1,10 @@
+.card {
+   float: left;
+    margin: 77px;
+    text-align: center;
+    
+}
+#cardID{
+    margin: auto;
+    width: 90%;
+}
