@@ -8,6 +8,7 @@ import { Test } from './sample';
 })
 export class ApiServiceService {
   readonly ROOT_URL = 'http://ec2-34-238-157-64.compute-1.amazonaws.com:3000'; //Added
+  //readonly ROOT_URL = 'http://localhost:8080';
   posts: Observable<any>; //Added
   constructor(private http:HttpClient) { }
 /*

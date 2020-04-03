@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'create', component:CreateAccountComponent},
   {path:'manu', component:ManufacturerComponent}, //Change
   {path:'dashboard',component: DashboardComponent}, //Change
-  {path:"createManu", component: CreateManuComponent}, //Change
+  {path:"createManu/:id", component: CreateManuComponent}, //Change
   //If there is a typo in the name route, it will always redirect to home
   { path: '**', redirectTo: 'home' }
 ];

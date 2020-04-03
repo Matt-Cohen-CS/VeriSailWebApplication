@@ -25,7 +25,7 @@ export class ManufacturerComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.fb.group({
       manufacturerID:['',[
-        Validators.required
+        //Validators.required
     ]],
       manuName: ['',[
         Validators.required

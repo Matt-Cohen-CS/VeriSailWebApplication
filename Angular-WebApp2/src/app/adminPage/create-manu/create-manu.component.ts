@@ -4,6 +4,8 @@ import { Test } from 'src/app/Services/sample';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { ApiServiceService } from 'src/app/Services/api-service.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-create-manu',
@@ -11,13 +13,18 @@ import { ApiServiceService } from 'src/app/Services/api-service.service';
   styleUrls: ['./create-manu.component.css']
 })
 export class CreateManuComponent implements OnInit {
-  manu: any;
-  
+  manu = {manufacturerID: ''}; //TO GET RID OF ERROR OF 'cannot find manufacturerID of undefined'
+  curManuID;
   myForm: FormGroup;
   serviceData: string;
-  constructor(private _formService: SendFormService, private fb:FormBuilder, private _apiService: ApiServiceService) { }
+  constructor(private _formService: SendFormService, private fb:FormBuilder, private _apiService: ApiServiceService, private activatedRoute: ActivatedRoute) { }
  // subs = new SubSink();
   ngOnInit() {
+    this.curManuID = this.activatedRoute.snapshot.params.id;
+
+    this._apiService.getPostByID(this.curManuID).subscribe(data => {
+      this.manu = data;
+    });
     
     this.myForm = this.fb.group({
       manufacturerID:['',[
@@ -50,21 +57,21 @@ export class CreateManuComponent implements OnInit {
     //   }
     // );
     // console.log(this.serviceData);
-    this._formService.form$
-    .subscribe(
-      data =>
-      {
-        // this.serviceData = data;
-        this._apiService.getPostByID(data).subscribe(
-          data =>
-          {
+    // this._formService.form$
+    // .subscribe(
+    //   data =>
+    //   {
+    //     // this.serviceData = data;
+    //     this._apiService.getPostByID(data).subscribe(
+    //       data =>
+    //       {
             
-            this.createManu(data);
-            console.log("In Post1", data);
-          }
-          );
-      }
-    );
+    //         this.createManu(data);
+    //         console.log("In Post1", data);
+    //       }
+    //       );
+    //   }
+    // );
     // this._apiService.getPostByID("101").subscribe(
     //   data =>
     //   {
