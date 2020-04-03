@@ -19,32 +19,43 @@ export class CreateManuComponent implements OnInit {
   serviceData: string;
   constructor(private _formService: SendFormService, private fb:FormBuilder, private _apiService: ApiServiceService, private activatedRoute: ActivatedRoute) { }
  // subs = new SubSink();
+
+ stateArray: string[] = [
+  'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
+  'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+  'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
+  'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico',
+  'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
+  'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+];
   ngOnInit() {
     this.curManuID = this.activatedRoute.snapshot.params.id;
 
     this._apiService.getPostByID(this.curManuID).subscribe(data => {
       this.manu = data;
+      this.checkTransfer(this.manu);
     });
     
     this.myForm = this.fb.group({
       manufacturerID:['',[
-        Validators.required
+        // Validators.required
     ]],
       manuName: ['',[
-        Validators.required
+      //  Validators.required
       ]],
       zip:['',[
-        Validators.required,
+       // Validators.required,
         Validators.minLength(5)
       ]],
       street:['',[
-        Validators.required
+       // Validators.required
       ]],
       city:['',[
-        Validators.required
+        //Validators.required
       ]],
       state:['',[
-        Validators.required
+       // Validators.required
       ]]
     });
 
@@ -112,7 +123,14 @@ export class CreateManuComponent implements OnInit {
     console.log(this.serviceData);
     this.myForm.valueChanges.subscribe(console.log);
   }
-
+ checkCondition(data){
+   
+     console.log(this.manuName.value);
+    console.log(data.manuName);
+ }
+ checkTransfer(data){
+    this.checkCondition(data);
+ }
   /*
    Getters, this is for error checking
    */

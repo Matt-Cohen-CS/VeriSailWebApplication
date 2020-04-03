@@ -51,68 +51,96 @@
                     </table>
                 </div>
                 <!-- </form>   -->
-                <form [formGroup]="myForm">
-                    Value: {{myForm.value | json}}
-                    <hr>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <mat-form-field>
-                                    <input matInput placeholder="manufacturer ID" formControlName="manufacturerID">
-                                
-                                    <mat-error *ngIf="manufacturerID.touched">
-                                        Required field
-                                    </mat-error>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput placeholder="Manufacturer name" formControlName="manuName">
-                                    <mat-error *ngIf="manuName.touched">
-                                        Required field
-                                    </mat-error>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput placeholder="street" formControlName="street">
-                                    <mat-error *ngIf="street.touched">
-                                        Required field
-                                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                     
-                    </div>
-                    <div class="row">
+                <hr>
+            <p>
+                <strong> <span> All changes will update Manufacturer: {{manu.manufacturerID}}</span></strong>
+            </p>
+            <form [formGroup]="myForm">
+                <table class="table table-hover" id="updateTable">
+                    <thead>
+                      <tr>
+                        <th scope="col">Attributes</th>
+                        <th scope="col">Before Change</th>
+                        <th scope="col">After Change</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row" class="align-middle">Manufacturer Name</th>
+                        <td class="align-middle">{{manu.manuName}}</td>
+                        <td class="align-middle">
+                            
+                            <mat-form-field>
+                                <input matInput placeholder="Manufacturer name" formControlName="manuName">
+                                <!-- <mat-error *ngIf="manuName.touched">
+                                    Required field
+                                </mat-error> -->
+                         </mat-form-field>
+                        </td>
                         
-                        <div class="col">
-                            <div class="form-group">
-                                <mat-form-field>
-                                    <input matInput placeholder="city" formControlName="city">
-                                    <mat-error *ngIf="city.touched">
-                                        Required field
-                                    </mat-error>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <mat-label>State</mat-label>
-                                    <mat-select formControlName="state">
-                                      <mat-option>None</mat-option>
-                                      <mat-option *ngFor="let state of stateArray" [value]="state">{{state}}</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="state.touched">
-                                        Required field
-                                    </mat-error>
-                                  </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput placeholder="Zip Code" formControlName="zip">
-                                    <mat-error *ngIf="zip.touched">
-                                        Required field. Please use your five digit Zip-Code
-                                    </mat-error>
-                                    <mat-hint align="end">Only five digit Zip-Codes allowed</mat-hint>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                    </div>
-                    <button mat-raised-button type="submit"[disabled]="myForm.invalid" color="primary" (click)="submitData()">Submit</button>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="align-middle">Street</th>
+                        <td class="align-middle">{{manu.street}}</td>
+                        <td class="align-middle">
+                            <mat-form-field>
+                                <input matInput placeholder="street" formControlName="street">
+                                <!-- <mat-error *ngIf="street.touched">
+                                    Required field
+                                </mat-error> -->
+                            </mat-form-field>
+                         </td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="align-middle">City</th>
+                        <td class="align-middle">{{manu.city}}</td>
+                        <td class="align-middle"> 
+                            <mat-form-field>
+                                <input matInput placeholder="city" formControlName="city">
+                                <!-- <mat-error *ngIf="city.touched">
+                                    Required field
+                                </mat-error> -->
+                            </mat-form-field>
+                        </td>
+                        
+                      </tr>
+                      <tr>
+                        <th scope="row" class="align-middle">State</th>
+                        <td class="align-middle">{{manu.state}}</td>
+                        <td class="align-middle"> 
+                            <mat-form-field>
+                            <mat-label>State</mat-label>
+                                <mat-select formControlName="state">
+                                <mat-option>None</mat-option>
+                                <mat-option *ngFor="let state of stateArray" [value]="state">{{state}}</mat-option>
+                                </mat-select>
+                                <!-- <mat-error *ngIf="state.touched">
+                                    Required field
+                                </mat-error> -->
+                            </mat-form-field>
+                        </td>
+                      
+                      </tr>
+                      <tr>
+                        <th scope="row" class="align-middle">Zip Code</th>
+                        <td class="align-middle">{{manu.zip}}</td>
+                        <td class="align-middle">
+                            <mat-form-field>
+                                <input matInput placeholder="Zip Code" formControlName="zip">
+                                <!-- <mat-error *ngIf="zip.touched">
+                                    Required field. Please use your five digit Zip-Code
+                                </mat-error> -->
+                                <mat-hint align="end">Only five digit Zip-Codes allowed</mat-hint>
+                            </mat-form-field>
+                        </td>
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- Value: {{myForm.value | json}} -->
+                  </form>
+                <button mat-raised-button type="submit"[disabled]="myForm.invalid" color="primary" (click)="checkCondition()">Update Table</button>
                     <hr>       
-                </form>
             </main>
         </div>
     </div>
