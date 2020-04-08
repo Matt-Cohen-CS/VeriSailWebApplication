@@ -1,10 +1,11 @@
 <body>
 
     <app-admin-header></app-admin-header>
+    <app-admin-nav  id="navAdmin"></app-admin-nav>
     <div class="container-fluid">
         <div class="row">
             <!-- App-admin-nav will need this class for it to function correctly -->
-            <app-admin-nav class="col-md-2 d-none d-md-block bg-light sidebar"></app-admin-nav>
+           
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div
@@ -139,7 +140,7 @@
                   </table>
                   <!-- Value: {{myForm.value | json}} -->
                   </form>
-                <button mat-raised-button type="submit"[disabled]="myForm.invalid" color="primary" (click)="checkCondition()">Update Table</button>
+                <button mat-raised-button type="submit"[disabled]="myForm.invalid" class="btn btn-secondary" (click)="checkCondition()">Update Table</button>
                     <hr>       
             </main>
         </div>

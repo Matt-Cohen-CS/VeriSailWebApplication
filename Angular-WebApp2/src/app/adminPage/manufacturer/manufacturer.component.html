@@ -1,12 +1,14 @@
 <body>
 
     <app-admin-header></app-admin-header>
+    <app-admin-nav ></app-admin-nav>
     <div class="container-fluid">
-        <div class="row">
+        <!-- <div class="row"> -->
             <!-- App-admin-nav will need this class for it to function correctly -->
-            <app-admin-nav class="col-md-2 d-none d-md-block bg-light sidebar"></app-admin-nav>
+           
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-6">
+                
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Hello, {{user}}! Welcome to VeriSail</h1>
@@ -34,15 +36,15 @@
                         <tbody>
                             <tr *ngFor="let man of manu">
                                
-                                <td>{{man.manufacturerID}}</td>
-                                <td>{{man.manuName}}</td>
-                                <td>{{man.street}}</td>
-                                <td>{{man.city}}</td>
-                                <td>{{man.state}}</td>
-                                <td>{{man.zip}}</td>
-                                <td>{{man.userID}}</td>
-                                <td>{{man.manufacturerscol}}</td>
-                                <td><button type="button"class="btn btn-secondary" id="edit" routerLink="/createManu/{{man.manufacturerID}}">Edit</button></td>
+                                <td class="align-middle">{{man.manufacturerID}}</td>
+                                <td class="align-middle">{{man.manuName}}</td>
+                                <td class="align-middle">{{man.street}}</td>
+                                <td class="align-middle">{{man.city}}</td>
+                                <td class="align-middle">{{man.state}}</td>
+                                <td class="align-middle">{{man.zip}}</td>
+                                <td class="align-middle">{{man.userID}}</td>
+                                <td class="align-middle">{{man.manufacturerscol}}</td>
+                                <td class="align-middle"><button type="button"class="btn btn-secondary" id="edit" routerLink="/createManu/{{man.manufacturerID}}">Edit</button></td>
                                 
                             </tr>
                         </tbody>
@@ -169,5 +171,5 @@
                     <hr>       
                 </form>
             </main>
-        </div>
+        <!-- </div> -->
     </div>
