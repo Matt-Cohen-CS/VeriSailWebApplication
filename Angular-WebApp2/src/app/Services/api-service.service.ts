@@ -18,6 +18,14 @@ Added
    // this.posts = this.http.get(this.ROOT_URL) 
    return this.http.get<any>(this.ROOT_URL+"/manufacturers");
   }
+  updateManu(id:string,data:any): Observable<any>{
+    // this.posts = this.http.get(this.ROOT_URL) 
+    return this.http.put<any>(this.ROOT_URL+"/manufacturerupdate/"+id,data,{
+      headers: new HttpHeaders({
+        'Content-type':'application/json'
+      })
+    });
+   }
   getPostByID(id:string): Observable<any>{
     // this.posts = this.http.get(this.ROOT_URL) 
     return this.http.get<any>(this.ROOT_URL+"/manufacturers/"+id);

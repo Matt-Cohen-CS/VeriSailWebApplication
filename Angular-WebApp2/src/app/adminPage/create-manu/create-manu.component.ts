@@ -38,7 +38,7 @@ export class CreateManuComponent implements OnInit {
     });
     
     this.myForm = this.fb.group({
-      manufacturerID:['',[
+      manufacturerID:[this.curManuID,[
         // Validators.required
     ]],
       manuName: ['',[
@@ -58,39 +58,7 @@ export class CreateManuComponent implements OnInit {
        // Validators.required
       ]]
     });
-
-    // this._formService.form$
-    // .subscribe(
-    //   data =>
-    //   {
-    //     this.serviceData.push(data);
-    //     console.log(this.serviceData);
-    //   }
-    // );
-    // console.log(this.serviceData);
-    // this._formService.form$
-    // .subscribe(
-    //   data =>
-    //   {
-    //     // this.serviceData = data;
-    //     this._apiService.getPostByID(data).subscribe(
-    //       data =>
-    //       {
-            
-    //         this.createManu(data);
-    //         console.log("In Post1", data);
-    //       }
-    //       );
-    //   }
-    // );
-    // this._apiService.getPostByID("101").subscribe(
-    //   data =>
-    //   {
-    //      this.manu = data;
-    //   }
-    //   );
     this.myForm.valueChanges.subscribe(console.log);
-    
   }
   createManu(data:any){
     this.manu = data;
@@ -124,12 +92,16 @@ export class CreateManuComponent implements OnInit {
     this.myForm.valueChanges.subscribe(console.log);
   }
  checkCondition(data){
-   
-     console.log(this.manuName.value);
-    console.log(data.manuName);
+       
+    this._apiService.updateManu(this.curManuID,this.myForm.value)
+    .subscribe(
+      response => console.log('Success!', response),
+      error => console.error('Error', error)
+      );
+      console.log(this.myForm.value);
  }
  checkTransfer(data){
-    this.checkCondition(data);
+    //this.checkCondition(data);
  }
   /*
    Getters, this is for error checking

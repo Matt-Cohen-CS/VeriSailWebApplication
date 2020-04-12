@@ -1,10 +1,10 @@
 .nav-side-menu {
-    overflow: auto;
+  overflow: auto;
   font-family: verdana;
   font-size: 12px;
   font-weight: 200;
   background-color: gray;
-  position: fixed;
+  position: absolute;
   
   width: 175px;
   height: 100%;
