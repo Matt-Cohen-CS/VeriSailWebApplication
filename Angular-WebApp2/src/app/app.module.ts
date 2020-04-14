@@ -9,6 +9,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material';
+import {MatSortModule} from '@angular/material/sort';
  //End of forms imports
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -71,6 +74,9 @@ import { HeaderComponent } from './Component/header/header.component';
     MatSelectModule,
     MatCheckboxModule,
     MatChipsModule,
+    MatTableModule,
+    MatIconModule,
+    MatSortModule,
     ReactiveFormsModule,
      //End of forms imports
     BsDropdownModule.forRoot(),

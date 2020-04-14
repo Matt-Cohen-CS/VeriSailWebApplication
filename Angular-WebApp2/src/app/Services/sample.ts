@@ -5,6 +5,5 @@ export interface Test {
     city: string,
     state: string,
     zip: string,
-    userID: null,
-    manufacturerscol:null
+    userID?: null,
 }

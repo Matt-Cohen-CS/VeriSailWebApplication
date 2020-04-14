@@ -1,27 +1,14 @@
-input {
-    color: black;
+main {
+	overflow: auto;
 }
-mat-form-field {
-    margin: .3vw;
+
+@media (max-width: 1000px) {
+	main {
+		margin-right: 1vw;
+	}
 }
-#edit {
-    height: fit-content;
-    width: fit-content;
-}
-td{
-   padding-top: .5vw;
-   margin: auto;
-   border-style: groove;
-   border-top: groove;
-}
-@media (max-width: 1000px){
-    main{
-        margin-right:1vw;
-    }
-}
-@media (min-width: 1200px){
-    main{
-        
-        margin-right: 3.9vw;
-    }
+@media (min-width: 1200px) {
+	main {
+		margin-right: 3.9vw;
+	}
 }
