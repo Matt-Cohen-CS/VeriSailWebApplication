@@ -91,12 +91,21 @@ export class CreateManuComponent implements OnInit {
     console.log(this.serviceData);
     this.myForm.valueChanges.subscribe(console.log);
   }
- checkCondition(data){
+ checkCondition(){
        
+    // this._apiService.updateManu(this.curManuID,this.myForm.value)
+    // .subscribe(
+    //   response => console.log('Success!', response),
+    //   error => console.error('Error', error)
+    //   );
+    //   console.log(this.myForm.value);
+    console.log("Hello");
     this._apiService.updateManu(this.curManuID,this.myForm.value)
+    
     .subscribe(
-      response => console.log('Success!', response),
-      error => console.error('Error', error)
+      data=>{
+        console.log(data);
+      }
       );
       console.log(this.myForm.value);
  }
