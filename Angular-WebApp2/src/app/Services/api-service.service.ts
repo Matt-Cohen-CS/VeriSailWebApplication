@@ -20,14 +20,8 @@ Added
   }
   updateManu(id,data): Observable<any>{
     // this.posts = this.http.get(this.ROOT_URL) 
-   return this.http.put<any>("https://cors-anywhere.herokuapp.com/"+this.ROOT_URL+"/manufacturerupdate/"+id,data);
-   //return this.http.put<any>(this.ROOT_URL+"/manufacturerupdate/"+id,data,{
-    // headers: new HttpHeaders({
-    //   'Content-type':'application/json',
-    //   'Access-Control-Allow-Origin': '*',
-    //   'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
-  //   })
-  //  });
+   //eturn this.http.put<any>("https://cors-anywhere.herokuapp.com/"+this.ROOT_URL+"/manufacturerupdate/"+id,data);
+   return this.http.put<any>(this.ROOT_URL+"/manufacturerupdate/"+id,data);
   }
   getPostByID(id:string): Observable<any>{
     // this.posts = this.http.get(this.ROOT_URL) 
