@@ -40,10 +40,3 @@ export class ManufacturerComponent implements OnInit {
 		});
 	}
 }
-// manufacturerID: string,
-// manuName: string,
-// street: string,
-// city: string,
-// state: string,
-// zip: string,
-// userID?: null,
