@@ -5,7 +5,13 @@ table {
 	height: 400px;
 	width: 100%;
 }
-
+.hide {
+	display: none;
+}
+mat-footer-row {
+	justify-content: center;
+	font-style: italic;
+}
 .form-container {
 	/* height: 700px; */
 	/* overflow: auto; */

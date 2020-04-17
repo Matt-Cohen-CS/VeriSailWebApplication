@@ -12,9 +12,6 @@ export class ManufacturerService {
 	manuID;
 	constructor(private http: HttpClient, private fb: FormBuilder) {}
 
-	getManufacturerList(): Observable<Test[]> {
-		return this.http.get<Test[]>(this.ROOT_URL + '/manufacturers');
-	}
 	form: FormGroup = new FormGroup({
 		manufacturerID: new FormControl(''),
 		manuName: new FormControl('', Validators.required),
@@ -35,6 +32,9 @@ export class ManufacturerService {
 			userID: ''
 		});
 	}
+	/*
+		adds data from the database by the type using the HTTP post
+	*/
 	addManu(data) {
 		return this.http.post<any>(this.ROOT_URL + '/newmanufacturer', data, {
 			headers: new HttpHeaders({
@@ -42,35 +42,38 @@ export class ManufacturerService {
 			})
 		});
 	}
-	sendData(data) {
-		this.manuID = data;
-		console.log(this.manuID);
-	}
-	returnData(): any {
-		return this.manuID;
-	}
-	getManufacturerListByID(id): Observable<any> {
-		return this.http.get<Test[]>(this.ROOT_URL + '/manufacturers' + '/' + id);
-	}
+	/*
+		Updates data from the database by the ID using the HTTP put
+	*/
 	updateManu(id, data): Observable<any> {
 		return this.http.put<any>(
 			'https://cors-anywhere.herokuapp.com/' + this.ROOT_URL + '/manufacturerupdate/' + id,
 			data
 		);
 	}
+	/*
+		Retrieves data from the database by the type using the HTTP get
+	*/
+	getManufacturerList(): Observable<Test[]> {
+		return this.http.get<Test[]>(this.ROOT_URL + '/manufacturers');
+	}
+	/*
+		Retrieves data from the database by the ID
+	*/
+	getManufacturerListByID(id): Observable<any> {
+		return this.http.get<Test[]>(this.ROOT_URL + '/manufacturers' + '/' + id);
+	}
+	/*
+		Used to retrieve the manufacturerID from the Manufacturer dashboard, used by getManufacturerListByID()
+	*/
+	sendData(data) {
+		this.manuID = data;
+		console.log(this.manuID);
+	}
+	/*
+		Used to retrieve the manufacturerID from the Manufacturer dashboard, used by getManufacturerListByID()
+	*/
+	returnData(): any {
+		return this.manuID;
+	}
 }
-// //readonly ROOT_URL = 'http://localhost:8080';
-// posts: Observable<any>; //Added
-// manufacturersList: Observable<any>;
-// constructor(private http:HttpClient) { }
-
-// getPost(): Observable<any>{
-//   this.manufacturersList =  this.http.get<any>(this.ROOT_URL+"/manufacturers");
-//   console.log('here');
-//   return this.manufacturersList;
-//  }
-//  insertManufacturer(newManufacturer){
-
-// }
-
-// }

@@ -66,9 +66,20 @@
                         </button>
                     </td>
                 </ng-container>
+                <ng-container matColumnDef="loading">
+                    <mat-footer-cell *matFooterCellDef colspan="6">
+                        Loading data...
+                    </mat-footer-cell>
+                </ng-container>   
+                <ng-container matColumnDef="No data">
+                    <mat-footer-cell *matFooterCellDef colspan="6">
+                        No data
+                    </mat-footer-cell>
+                </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
                 <tr mat-row *matRowDef="let row; columns:displayedColumns;"></tr>
-
+                <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></tr>
+                <tr mat-footer-row *matFooterRowDef="['No data']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></tr> 
             </table>
             <mat-paginator [pageSizeOptions]="[5,10]" showFirstLastButtons></mat-paginator>
         </div>
