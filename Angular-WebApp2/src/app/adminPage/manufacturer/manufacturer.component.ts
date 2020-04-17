@@ -63,22 +63,36 @@ export class ManufacturerComponent implements OnInit {
 	}
 
 	onCreate() {
-		const dialogConfig = new MatDialogConfig();
-		dialogConfig.disableClose = true;
-		dialogConfig.autoFocus = true;
-		dialogConfig.width = '100%';
-		dialogConfig.height = '100%';
-		this.dialog.open(CreateManufacturerComponent);
+		const dialogConfig = this.dialog.open(CreateManufacturerComponent, {
+			width: '600px',
+			height: '500px',
+			autoFocus: true
+		});
+		dialogConfig.afterClosed().subscribe((result) => {
+			console.log('Create was closed');
+		});
+		// dialogConfig.disableClose = true;
+		// dialogConfig.autoFocus = true;
+		// dialogConfig.width = '100%';
+		// dialogConfig.height = '100%';
+		// this.dialog.open(CreateManufacturerComponent, {
+		// 	width: '600px',
+		// 	height: '500px'
+		// });
 	}
 	onEdit(row) {
 		this.curManuID = row.manufacturerID;
 		this._sendForm.sendForm(this.curManuID);
-		const dialogConfig = new MatDialogConfig();
+
 		this._apiService.sendData(this.curManuID);
-		dialogConfig.disableClose = true;
-		dialogConfig.autoFocus = true;
-		dialogConfig.width = '100%';
-		dialogConfig.height = '100%';
-		this.dialog.open(UpdateManufacturerComponent);
+		// dialogConfig.disableClose = true;
+		// dialogConfig.autoFocus = true;
+		// dialogConfig.width = '100%';
+		// dialogConfig.height = '100%';
+		const dialogConfig = this.dialog.open(UpdateManufacturerComponent, {
+			width: '800px',
+			height: '600px',
+			autoFocus: true
+		});
 	}
 }

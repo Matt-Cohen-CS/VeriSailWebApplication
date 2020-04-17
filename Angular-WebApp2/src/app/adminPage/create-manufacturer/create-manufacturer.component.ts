@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ApiServiceService } from 'src/app/Services/api-service.service';
 import { Test } from 'src/app/Services/sample';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SendFormService } from 'src/app/Services/send-form.service';
 import { ManufacturerService } from 'src/app/Services/API/manufacturer.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ManufacturerComponent } from '../manufacturer/manufacturer.component';
 @Component({
 	selector: 'app-create-manufacturer',
 	templateUrl: './create-manufacturer.component.html',
@@ -16,7 +18,8 @@ export class CreateManufacturerComponent implements OnInit {
 	constructor(
 		private _apiService: ManufacturerService,
 		private fb: FormBuilder,
-		private _sendForm: SendFormService
+		private _sendForm: SendFormService,
+		public dialogRef: MatDialogRef<CreateManufacturerComponent> //@Inject(MAT_DIALOG_DATA) public data: ManufacturerComponent
 	) {}
 	stateArray: string[] = [
 		'AL : Alabama',
@@ -103,6 +106,9 @@ export class CreateManufacturerComponent implements OnInit {
 		this._sendForm.sendForm(i);
 	}
 
+	closeForm() {
+		this.dialogRef.close();
+	}
 	/*
   Getters, this is for Validators
   */

@@ -1,12 +1,16 @@
+body {
+	background-color: white;
+	height: 100%;
+	width: 100%;
+}
 input {
 	color: black;
 }
 mat-form-field {
 	margin: .3vw;
 }
-#edit {
-	height: fit-content;
-	width: fit-content;
+#close {
+	margin: 1vw;
 }
 td {
 	padding-top: .5vw;
