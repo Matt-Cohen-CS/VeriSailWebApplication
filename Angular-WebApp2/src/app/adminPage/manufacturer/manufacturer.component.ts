@@ -3,8 +3,20 @@ import { ApiServiceService } from 'src/app/Services/api-service.service';
 import { Test } from 'src/app/Services/sample';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SendFormService } from 'src/app/Services/send-form.service';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import {
+	MatTableDataSource,
+	MatSort,
+	MatPaginator,
+	MatDialog,
+	MatDialogRef,
+	MAT_DIALOG_DATA,
+	MatDialogConfig
+} from '@angular/material';
 import { ManufacturerService } from 'src/app/Services/API/manufacturer.service';
+import { registerEscClick } from 'ngx-bootstrap/utils/triggers';
+import { CreateManuComponent } from '../create-manu/create-manu.component';
+import { CreateManufacturerComponent } from '../create-manufacturer/create-manufacturer.component';
+import { UpdateManufacturerComponent } from '../update-manufacturer/update-manufacturer.component';
 
 @Component({
 	selector: 'app-manufacturer',
@@ -13,22 +25,28 @@ import { ManufacturerService } from 'src/app/Services/API/manufacturer.service';
 })
 export class ManufacturerComponent implements OnInit {
 	manu: Test[];
-
-	constructor(private _apiService: ManufacturerService) {}
+	curManuID;
+	constructor(
+		private _apiService: ManufacturerService,
+		private dialog: MatDialog,
+		private _sendForm: SendFormService
+	) {}
 	listData: MatTableDataSource<any>;
 	displayedColumns: string[] = [
-		'Options',
 		'manufacturerID',
 		'manuName',
 		'street',
 		'city',
 		'state',
 		'zip',
-		'userID'
+		'userID',
+		'Options'
 	];
 
 	@ViewChild(MatSort, null)
-	sort: MatSort;
+	sort: MatSort; //Belong to the ViewChild above FORMAT IS IMPORTANT
+	@ViewChild(MatPaginator, null)
+	paginator: MatPaginator; //Belong to the ViewChild above FORMAT IS IMPORTANT
 	ngOnInit() {
 		this.postManufacturerList();
 	}
@@ -37,6 +55,30 @@ export class ManufacturerComponent implements OnInit {
 		this._apiService.getManufacturerList().subscribe((data) => {
 			this.listData = new MatTableDataSource(data);
 			this.listData.sort = this.sort;
+			this.listData.paginator = this.paginator;
 		});
+	}
+	applyFilter(filterValue: String) {
+		this.listData.filter = filterValue.trim().toLowerCase();
+	}
+
+	onCreate() {
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = true;
+		dialogConfig.autoFocus = true;
+		dialogConfig.width = '100%';
+		dialogConfig.height = '100%';
+		this.dialog.open(CreateManufacturerComponent);
+	}
+	onEdit(row) {
+		this.curManuID = row.manufacturerID;
+		this._sendForm.sendForm(this.curManuID);
+		const dialogConfig = new MatDialogConfig();
+		this._apiService.sendData(this.curManuID);
+		dialogConfig.disableClose = true;
+		dialogConfig.autoFocus = true;
+		dialogConfig.width = '100%';
+		dialogConfig.height = '100%';
+		this.dialog.open(UpdateManufacturerComponent);
 	}
 }

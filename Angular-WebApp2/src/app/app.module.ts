@@ -3,16 +3,21 @@ import { NgModule } from '@angular/core';
 /*
 Form imports
 */
-import {ReactiveFormsModule} from '@angular/forms' //Cannot use forms property with this import 
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatTableModule} from '@angular/material/table';
-import {MatIconModule} from '@angular/material';
-import {MatSortModule} from '@angular/material/sort';
- //End of forms imports
+import { ReactiveFormsModule } from '@angular/forms'; //Cannot use forms property with this import
+import {
+	MatInputModule,
+	MatSelectModule,
+	MatButtonModule,
+	MatCheckboxModule,
+	MatChipsModule,
+	MatTableModule,
+	MatIconModule,
+	MatSortModule,
+	MatPaginatorModule,
+	MatDialogModule,
+	MatDialog
+} from '@angular/material';
+//End of forms imports
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -27,62 +32,68 @@ import { CardComponent } from './Bootstrap/card/card.component';
 import { FormStackedComponent } from './Bootstrap/form-stacked/form-stacked.component';
 import { Form1Component } from './Component/form1/form1.component';
 import { TemplateComponent } from './Bootstrap/template/template.component';
-import {CreateAccountComponent} from './Component/create-account/create-account.component';
+import { CreateAccountComponent } from './Component/create-account/create-account.component';
 import { SignInComponent } from './Component/sign-in/sign-in.component';
-import {TemplateadminComponent} from './Bootstrap/templateadmin/templateadmin.component';
+import { TemplateadminComponent } from './Bootstrap/templateadmin/templateadmin.component';
 import { HttpClientModule } from '@angular/common/http';
-import {ApiServiceService} from './Services/api-service.service';
+import { ApiServiceService } from './Services/api-service.service';
 import { AdminHeaderComponent } from './adminPage/admin-header/admin-header.component';
 import { AdminNavComponent } from './adminPage/admin-nav/admin-nav.component';
 import { ManufacturerComponent } from './adminPage/manufacturer/manufacturer.component';
 import { DashboardComponent } from './adminPage/dashboard/dashboard.component';
 import { CreateManuComponent } from './adminPage/create-manu/create-manu.component';
 import { HeaderComponent } from './Component/header/header.component';
-
+import { CreateManufacturerComponent } from './adminPage/create-manufacturer/create-manufacturer.component';
+import { UpdateManufacturerComponent } from './adminPage/update-manufacturer/update-manufacturer.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    AboutComponent,
-    CreateAccountComponent,
-    HomeComponent,
-    CarouselComponent,
-    CardComponent,
-    FormStackedComponent,
-    Form1Component,
-    TemplateComponent,
-    SignInComponent,
-    TemplateadminComponent,
-    AdminHeaderComponent,
-    AdminNavComponent,
-    ManufacturerComponent,
-    DashboardComponent,
-    CreateManuComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule, 
-    /*
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		FooterComponent,
+		AboutComponent,
+		CreateAccountComponent,
+		HomeComponent,
+		CarouselComponent,
+		CardComponent,
+		FormStackedComponent,
+		Form1Component,
+		TemplateComponent,
+		SignInComponent,
+		TemplateadminComponent,
+		AdminHeaderComponent,
+		AdminNavComponent,
+		ManufacturerComponent,
+		DashboardComponent,
+		CreateManuComponent,
+		CreateManufacturerComponent,
+		UpdateManufacturerComponent
+	],
+	imports: [
+		BrowserModule,
+		HttpClientModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		/*
       Form imports
     */
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatTableModule,
-    MatIconModule,
-    MatSortModule,
-    ReactiveFormsModule,
-     //End of forms imports
-    BsDropdownModule.forRoot(),
-    CarouselModule.forRoot()
-  ],
-  providers: [ApiServiceService],
-  bootstrap: [AppComponent]
+		MatInputModule,
+		MatButtonModule,
+		MatSelectModule,
+		MatCheckboxModule,
+		MatChipsModule,
+		MatTableModule,
+		MatIconModule,
+		MatSortModule,
+		MatPaginatorModule,
+		MatDialogModule,
+		ReactiveFormsModule,
+		//End of forms imports
+		BsDropdownModule.forRoot(),
+		CarouselModule.forRoot()
+	],
+	providers: [ ApiServiceService ],
+	bootstrap: [ AppComponent ],
+	entryComponents: [ CreateManuComponent, CreateManufacturerComponent, UpdateManufacturerComponent ]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { SendFormService } from 'src/app/Services/send-form.service';
-import { Test } from 'src/app/Services/sample';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ApiServiceService } from 'src/app/Services/api-service.service';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialogRef } from '@angular/material';
+import { SendFormService } from 'src/app/Services/send-form.service';
+import { ManufacturerService } from 'src/app/Services/API/manufacturer.service';
 
 @Component({
-	selector: 'app-create-manu',
-	templateUrl: './create-manu.component.html',
-	styleUrls: [ './create-manu.component.css' ]
+	selector: 'app-update-manufacturer',
+	templateUrl: './update-manufacturer.component.html',
+	styleUrls: [ './update-manufacturer.component.css' ]
 })
-export class CreateManuComponent implements OnInit {
+export class UpdateManufacturerComponent implements OnInit {
 	manu = { manufacturerID: '' }; //TO GET RID OF ERROR OF 'cannot find manufacturerID of undefined'
 	curManuID;
 	myForm: FormGroup;
@@ -20,9 +18,8 @@ export class CreateManuComponent implements OnInit {
 	constructor(
 		private _formService: SendFormService,
 		private fb: FormBuilder,
-		private _apiService: ApiServiceService,
-		private activatedRoute: ActivatedRoute,
-		private dialogRef: MatDialogRef<CreateManuComponent>
+		private _apiService: ManufacturerService,
+		private activatedRoute: ActivatedRoute
 	) {}
 	// subs = new SubSink();
 
@@ -79,11 +76,13 @@ export class CreateManuComponent implements OnInit {
 		'Wyoming'
 	];
 	ngOnInit() {
-		this.curManuID = this.activatedRoute.snapshot.params.id;
-		this._apiService.getPostByID(this.curManuID).subscribe((data) => {
+		this.curManuID = this._apiService.returnData();
+
+		this._apiService.getManufacturerListByID(this.curManuID).subscribe((data) => {
 			this.manu = data;
 			this.checkTransfer(this.manu);
 		});
+
 		this.myForm = this.fb.group({
 			manufacturerID: [
 				this.curManuID,
@@ -134,7 +133,7 @@ export class CreateManuComponent implements OnInit {
 		// this._apiService.getPost().subscribe(data => this.posts = data);
 		// this.posts = this._apiService.getPost().subscribe(data => this.test = data);
 		console.log(id);
-		this._apiService.getPostByID(id).subscribe((data) => {
+		this._apiService.getManufacturerListByID(id).subscribe((data) => {
 			this.manu = data;
 			console.log('In Post', this.manu);
 		});
@@ -149,6 +148,12 @@ export class CreateManuComponent implements OnInit {
 		this.myForm.valueChanges.subscribe(console.log);
 	}
 	checkCondition() {
+		// this._apiService.updateManu(this.curManuID,this.myForm.value)
+		// .subscribe(
+		//   response => console.log('Success!', response),
+		//   error => console.error('Error', error)
+		//   );
+		//   console.log(this.myForm.value);
 		console.log('Hello');
 		this._apiService.updateManu(this.curManuID, this.myForm.value).subscribe((data) => {
 			console.log(data);
