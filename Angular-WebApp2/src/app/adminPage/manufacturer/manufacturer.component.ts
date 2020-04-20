@@ -70,29 +70,24 @@ export class ManufacturerComponent implements OnInit {
 		});
 		dialogConfig.afterClosed().subscribe((result) => {
 			console.log('Create was closed');
+			setTimeout(() => this.postManufacturerList(), 100);
+			this.postManufacturerList();
 		});
-		// dialogConfig.disableClose = true;
-		// dialogConfig.autoFocus = true;
-		// dialogConfig.width = '100%';
-		// dialogConfig.height = '100%';
-		// this.dialog.open(CreateManufacturerComponent, {
-		// 	width: '600px',
-		// 	height: '500px'
-		// });
 	}
 	onEdit(row) {
 		this.curManuID = row.manufacturerID;
 		this._sendForm.sendForm(this.curManuID);
-
 		this._apiService.sendData(this.curManuID);
-		// dialogConfig.disableClose = true;
-		// dialogConfig.autoFocus = true;
-		// dialogConfig.width = '100%';
-		// dialogConfig.height = '100%';
+		this._apiService.setForm(row);
 		const dialogConfig = this.dialog.open(UpdateManufacturerComponent, {
 			width: '800px',
 			height: '600px',
 			autoFocus: true
+		});
+		dialogConfig.afterClosed().subscribe((result) => {
+			console.log('Updating');
+			setTimeout(() => this.postManufacturerList(), 500);
+			this.postManufacturerList();
 		});
 	}
 }

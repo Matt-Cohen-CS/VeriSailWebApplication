@@ -12,6 +12,16 @@ mat-footer-row {
 	justify-content: center;
 	font-style: italic;
 }
+snack-bar-container.success {
+	background-color: green;
+	color: white;
+}
+#refresh {
+	float: right;
+	justify-content: center;
+	margin-top: 1.3vw;
+	margin-right: 1vw;
+}
 .form-container {
 	/* height: 700px; */
 	/* overflow: auto; */

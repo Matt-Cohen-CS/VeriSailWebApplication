@@ -5,12 +5,14 @@
         <!-- <div class="row"> -->
         <!-- App-admin-nav will need this class for it to function correctly -->
 
-
+        <mat-toolbar>
+           <span style='display: table-cell;'><h1>Create New Manufacturer</h1></span>
+            <span class="fill-remaining-space" style='display: table-cell; width:100%;'></span> 
+            <button class="btn-dialog-close" style='display: table-cell;' mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+        </mat-toolbar>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-6">
-            <h1 mat-dialog-content>Create Manufacturer</h1>
             <!-- </form>   -->
             <form [formGroup]="myForm">
-                Value: {{myForm.value | json}}
                 <hr>
                 <div class="row">
                     <div class="col">
@@ -70,7 +72,7 @@
                 </div>
                 <button mat-raised-button type="submit" [disabled]="myForm.invalid" color="primary"
                     (click)="submitData()">Submit</button>
-                <button mat-raised-button class="btn btn-light"(click)="closeForm()" id="close">No thanks</button>
+                <button mat-raised-button class="btn btn-light"(click)="onClose()" id="close">No thanks</button>
                 <hr>
             </form>
         </main>

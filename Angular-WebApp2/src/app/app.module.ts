@@ -15,14 +15,15 @@ import {
 	MatSortModule,
 	MatPaginatorModule,
 	MatDialogModule,
-	MatDialog
+	MatSnackBarModule,
+	MatToolbarModule
 } from '@angular/material';
 //End of forms imports
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FooterComponent } from './Component/footer/footer.component';
 import { AboutComponent } from './Component/about/about.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
@@ -87,6 +88,8 @@ import { UpdateManufacturerComponent } from './adminPage/update-manufacturer/upd
 		MatSortModule,
 		MatPaginatorModule,
 		MatDialogModule,
+		MatSnackBarModule,
+		MatToolbarModule,
 		ReactiveFormsModule,
 		//End of forms imports
 		BsDropdownModule.forRoot(),

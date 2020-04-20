@@ -6,6 +6,7 @@ import { SendFormService } from 'src/app/Services/send-form.service';
 import { ManufacturerService } from 'src/app/Services/API/manufacturer.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ManufacturerComponent } from '../manufacturer/manufacturer.component';
+import { NotificationService } from 'src/app/Services/notification.service';
 @Component({
 	selector: 'app-create-manufacturer',
 	templateUrl: './create-manufacturer.component.html',
@@ -19,13 +20,14 @@ export class CreateManufacturerComponent implements OnInit {
 		private _apiService: ManufacturerService,
 		private fb: FormBuilder,
 		private _sendForm: SendFormService,
-		public dialogRef: MatDialogRef<CreateManufacturerComponent> //@Inject(MAT_DIALOG_DATA) public data: ManufacturerComponent
+		public dialogRef: MatDialogRef<CreateManufacturerComponent>, //@Inject(MAT_DIALOG_DATA) public data: ManufacturerComponent
+		public notificiationService: NotificationService
 	) {}
 	stateArray: string[] = [
 		'AL : Alabama',
 		'AK : Alaska',
-		'AK : Arizona',
-		'AK : Arkansas',
+		'AZ : Arizona',
+		'AR : Arkansas',
 		'CA : California',
 		'CO : Colorado',
 		'CT : Connecticut',
@@ -98,17 +100,19 @@ export class CreateManufacturerComponent implements OnInit {
 		this._apiService
 			.addManu(this.myForm.value)
 			.subscribe((response) => console.log('Success!', response), (error) => console.error('Error', error));
+		this.onClose();
+		this.notificiationService.success('! Submitted Successfully');
 	}
-
+	onClose() {
+		this.myForm.reset();
+		this.dialogRef.close();
+	}
 	/*
   */
 	editManu(i: string) {
 		this._sendForm.sendForm(i);
 	}
 
-	closeForm() {
-		this.dialogRef.close();
-	}
 	/*
   Getters, this is for Validators
   */

@@ -42,6 +42,13 @@ export class ManufacturerService {
 			})
 		});
 	}
+	getForm() {
+		return this.form;
+	}
+	setForm(data) {
+		this.form = data;
+		//console.log(this.form);
+	}
 	/*
 		Updates data from the database by the ID using the HTTP put
 	*/
@@ -68,7 +75,7 @@ export class ManufacturerService {
 	*/
 	sendData(data) {
 		this.manuID = data;
-		console.log(this.manuID);
+		//console.log(this.manuID);
 	}
 	/*
 		Used to retrieve the manufacturerID from the Manufacturer dashboard, used by getManufacturerListByID()
