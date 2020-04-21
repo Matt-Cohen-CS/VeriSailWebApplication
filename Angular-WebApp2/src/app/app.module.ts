@@ -46,6 +46,9 @@ import { CreateManuComponent } from './adminPage/create-manu/create-manu.compone
 import { HeaderComponent } from './Component/header/header.component';
 import { CreateManufacturerComponent } from './adminPage/create-manufacturer/create-manufacturer.component';
 import { UpdateManufacturerComponent } from './adminPage/update-manufacturer/update-manufacturer.component';
+import { LabelOrdersComponent } from './adminPage/labelOrdersPage/label-orders/label-orders.component';
+import { UpdateLabelOrdersComponent } from './adminPage/labelOrdersPage/update-label-orders/update-label-orders.component';
+import { CreateLabelOrdersComponent } from './adminPage/labelOrdersPage/create-label-orders/create-label-orders.component';
 
 @NgModule({
 	declarations: [
@@ -68,7 +71,10 @@ import { UpdateManufacturerComponent } from './adminPage/update-manufacturer/upd
 		DashboardComponent,
 		CreateManuComponent,
 		CreateManufacturerComponent,
-		UpdateManufacturerComponent
+		UpdateManufacturerComponent,
+		LabelOrdersComponent,
+		UpdateLabelOrdersComponent,
+		CreateLabelOrdersComponent
 	],
 	imports: [
 		BrowserModule,
@@ -97,6 +103,15 @@ import { UpdateManufacturerComponent } from './adminPage/update-manufacturer/upd
 	],
 	providers: [ ApiServiceService ],
 	bootstrap: [ AppComponent ],
-	entryComponents: [ CreateManuComponent, CreateManufacturerComponent, UpdateManufacturerComponent ]
+	/*
+		Used for MatDialog popups
+	*/
+	entryComponents: [
+		CreateManuComponent,
+		CreateManufacturerComponent,
+		UpdateManufacturerComponent,
+		CreateLabelOrdersComponent,
+		UpdateLabelOrdersComponent
+	]
 })
 export class AppModule {}
