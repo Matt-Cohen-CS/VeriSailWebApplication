@@ -12,14 +12,14 @@
     </div> <!-- End of Row Div -->
 
     <!-- <form id="grid"> -->
-        <div class="row">
+        <!-- <div class="row">
             <div class="col">
                 <input type="text" class="form-control" placeholder="First name">
-            </div> <!-- End of col Div -->
+            </div> 
             <div class="col">
                 <input type="text" class="form-control" placeholder="Last name">
-            </div> <!-- End of col Div -->
-        </div> <!-- End of Row Div -->
+            </div> 
+        </div> 
         <div class="row">
             <div class="col">
                 <div class="form-group">
@@ -42,9 +42,59 @@
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Additional Comments</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div> -->
+    <form [formGroup]="myForm">
+        <hr>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <mat-form-field  class="halfwidth" appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input matInput placeholder="" formControlName="firstName">
+
+                        <!-- <mat-error *ngIf="manufacturerID.touched">
+                            Required field
+                        </mat-error> -->
+                    </mat-form-field> 
+                    <mat-form-field class="halfwidth" appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput placeholder="" formControlName="lastName">
+                    
+                        <!-- <mat-error *ngIf="manufacturerID.touched">
+                                                Required field
+                                            </mat-error> -->
+                    </mat-form-field>
+                    <mat-form-field class="fullwidth" appearance="outline">
+                        <mat-label>Email Address</mat-label>
+                        <input matInput placeholder="example@example.com" formControlName="email">
+                    
+                        <!-- <mat-error *ngIf="manufacturerID.touched">
+                            Required field
+                          </mat-error> -->
+                    </mat-form-field>
+                    <mat-form-field class="fullwidth" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="" formControlName="password">
+                    
+                        <!-- <mat-error *ngIf="manufacturerID.touched">
+                        Required field                         
+                     </mat-error> -->
+                    </mat-form-field>
+                    <mat-form-field class="halfwidth" appearance="outline">
+                        <mat-label>Type of User</mat-label>
+                        <mat-select formControlName="type">
+                            <mat-option>-- None --</mat-option>
+                            <mat-optgroup *ngFor = "let type of typeGroup" [label]="type.name">
+                                <mat-option *ngFor = "let name of type.list" [value]="name.value" >
+                                    {{name.viewValue}}
+                                </mat-option>
+                            </mat-optgroup>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
-
-
+    </form>
 
     <div class="container">
 
@@ -58,6 +108,5 @@
         </div>
 
     </div>
-    <!-- </form> -->
     
 </body>

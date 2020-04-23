@@ -61,8 +61,8 @@ export class ManufacturerService {
 	/*
 		Retrieves data from the database by the type using the HTTP get
 	*/
-	getManufacturerList(): Observable<Test[]> {
-		return this.http.get<Test[]>(this.ROOT_URL + '/manufacturers');
+	getManufacturerList(): Observable<any> {
+		return this.http.get<any>(this.ROOT_URL + '/manufacturers');
 	}
 	/*
 		Retrieves data from the database by the ID
