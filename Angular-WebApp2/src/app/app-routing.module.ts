@@ -9,6 +9,7 @@ import { ManufacturerComponent } from './adminPage/manufacturer/manufacturer.com
 import { DashboardComponent } from './adminPage/dashboard/dashboard.component';
 import { CreateManuComponent } from './adminPage/create-manu/create-manu.component';
 import { LabelOrdersComponent } from './adminPage/labelOrdersPage/label-orders/label-orders.component';
+import { DistributorsComponent } from './adminPage/DistributorsPage/distributors/distributors.component';
 const routes: Routes = [
 	{ path: 'home', component: HomeComponent },
 	{ path: 'about', component: AboutComponent },
@@ -20,7 +21,7 @@ const routes: Routes = [
 	{ path: 'dashboard', component: DashboardComponent }, //Change
 	{ path: 'createManu/:id', component: CreateManuComponent }, //Change
 	{ path: 'labelorders', component: LabelOrdersComponent }, //Change
-
+	{ path: 'dist', component: DistributorsComponent },
 	//If there is a typo in the name route, it will always redirect to home
 	{ path: '**', redirectTo: 'home' }
 ];

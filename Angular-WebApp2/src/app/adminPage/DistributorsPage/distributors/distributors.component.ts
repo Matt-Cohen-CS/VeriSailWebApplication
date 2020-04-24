@@ -14,46 +14,38 @@ import {
 } from '@angular/material';
 import { ManufacturerService } from 'src/app/Services/API/manufacturer.service';
 import { registerEscClick } from 'ngx-bootstrap/utils/triggers';
-import { UpdateLabelOrdersComponent } from '../update-label-orders/update-label-orders.component';
-import { CreateLabelOrdersComponent } from '../create-label-orders/create-label-orders.component';
-import { LabelordersService } from 'src/app/Services/API/labelorders.service';
+import { DistributorsService } from 'src/app/Services/API/distributors.service';
+import { CreateDistributorsComponent } from '../create-distributors/create-distributors.component';
+import { UpdateDistributorsComponent } from '../update-distributors/update-distributors.component';
 
 @Component({
-	selector: 'app-label-orders',
-	templateUrl: './label-orders.component.html',
-	styleUrls: [ './label-orders.component.css' ]
+	selector: 'app-distributors',
+	templateUrl: './distributors.component.html',
+	styleUrls: [ './distributors.component.css' ]
 })
-export class LabelOrdersComponent implements OnInit {
-	manu: Test[];
+export class DistributorsComponent implements OnInit {
 	curOrderNum;
-	lastQR = 0;
 	constructor(
-		private _apiService: LabelordersService,
+		private _apiService: DistributorsService,
 		private dialog: MatDialog,
 		private _sendForm: SendFormService
 	) {}
 	listData: MatTableDataSource<any>;
-	displayedColumns: string[] = [ 'orderNum', 'partName', 'QR_begin', 'QR_end', 'label_quantity', 'Options' ];
+	displayedColumns: string[] = [ 'distributorID', 'distName', 'street', 'city', 'state', 'zip', 'userID', 'Options' ];
 
 	@ViewChild(MatSort, null)
 	sort: MatSort; //Belong to the ViewChild above FORMAT IS IMPORTANT
 	@ViewChild(MatPaginator, null)
 	paginator: MatPaginator; //Belong to the ViewChild above FORMAT IS IMPORTANT
 	ngOnInit() {
-		this.postLabelOrderList();
+		this.postDistributorList();
 	}
 
-	postLabelOrderList() {
-		this._apiService.getLabelOrderList().subscribe((data) => {
+	postDistributorList() {
+		this._apiService.getDistributor().subscribe((data) => {
 			this.listData = new MatTableDataSource(data);
 			this.listData.sort = this.sort;
 			this.listData.paginator = this.paginator;
-			for (let end of data) {
-				if (+end.QR_end > this.lastQR) {
-					this.lastQR = +end.QR_end;
-				}
-			}
-			this._apiService.sendQRCode(this.lastQR);
 		});
 	}
 	applyFilter(filterValue: String) {
@@ -61,15 +53,15 @@ export class LabelOrdersComponent implements OnInit {
 	}
 
 	onCreate() {
-		const dialogConfig = this.dialog.open(CreateLabelOrdersComponent, {
+		const dialogConfig = this.dialog.open(CreateDistributorsComponent, {
 			width: '600px',
 			height: '500px',
 			autoFocus: true
 		});
 		dialogConfig.afterClosed().subscribe((result) => {
 			console.log('Create was closed');
-			setTimeout(() => this.postLabelOrderList(), 100);
-			this.postLabelOrderList();
+			setTimeout(() => this.postDistributorList(), 100);
+			this.postDistributorList();
 		});
 	}
 	onEdit(row) {
@@ -77,15 +69,15 @@ export class LabelOrdersComponent implements OnInit {
 		this._sendForm.sendForm(this.curOrderNum);
 		this._apiService.sendData(this.curOrderNum);
 		this._apiService.setForm(row);
-		const dialogConfig = this.dialog.open(UpdateLabelOrdersComponent, {
+		const dialogConfig = this.dialog.open(UpdateDistributorsComponent, {
 			width: '800px',
 			height: '600px',
 			autoFocus: true
 		});
 		dialogConfig.afterClosed().subscribe((result) => {
 			console.log('Updating');
-			setTimeout(() => this.postLabelOrderList(), 500);
-			this.postLabelOrderList();
+			setTimeout(() => this.postDistributorList(), 500);
+			this.postDistributorList();
 		});
 	}
 }

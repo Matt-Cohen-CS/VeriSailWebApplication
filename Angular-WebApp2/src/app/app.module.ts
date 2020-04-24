@@ -49,6 +49,9 @@ import { UpdateManufacturerComponent } from './adminPage/update-manufacturer/upd
 import { LabelOrdersComponent } from './adminPage/labelOrdersPage/label-orders/label-orders.component';
 import { UpdateLabelOrdersComponent } from './adminPage/labelOrdersPage/update-label-orders/update-label-orders.component';
 import { CreateLabelOrdersComponent } from './adminPage/labelOrdersPage/create-label-orders/create-label-orders.component';
+import { DistributorsComponent } from './adminPage/DistributorsPage/distributors/distributors.component';
+import { CreateDistributorsComponent } from './adminPage/DistributorsPage/create-distributors/create-distributors.component';
+import { UpdateDistributorsComponent } from './adminPage/DistributorsPage/update-distributors/update-distributors.component';
 
 @NgModule({
 	declarations: [
@@ -74,7 +77,10 @@ import { CreateLabelOrdersComponent } from './adminPage/labelOrdersPage/create-l
 		UpdateManufacturerComponent,
 		LabelOrdersComponent,
 		UpdateLabelOrdersComponent,
-		CreateLabelOrdersComponent
+		CreateLabelOrdersComponent,
+		DistributorsComponent,
+		CreateDistributorsComponent,
+		UpdateDistributorsComponent
 	],
 	imports: [
 		BrowserModule,

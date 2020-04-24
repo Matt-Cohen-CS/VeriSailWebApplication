@@ -44,7 +44,7 @@ export class UpdateLabelOrdersComponent implements OnInit {
 					// Validators.required
 				]
 			],
-			email: [
+			partName: [
 				'',
 				[
 					//  Validators.required
@@ -77,7 +77,7 @@ export class UpdateLabelOrdersComponent implements OnInit {
 					// Validators.required
 				]
 			],
-			email: [
+			partName: [
 				'',
 				[
 					//  Validators.required
@@ -171,8 +171,8 @@ export class UpdateLabelOrdersComponent implements OnInit {
 	get orderNum() {
 		return this.myForm.get('orderNum');
 	}
-	get email() {
-		return this.myForm.get('email');
+	get partName() {
+		return this.myForm.get('partName');
 	}
 	get QR_begin() {
 		return this.myForm.get('QR_begin');

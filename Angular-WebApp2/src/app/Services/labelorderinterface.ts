@@ -1,6 +1,6 @@
 export interface LabelOrder {
 	orderNum: string;
-	email: string;
+	partName: string;
 	QR_begin: string;
 	QR_end: string;
 	label_quantity: string;
