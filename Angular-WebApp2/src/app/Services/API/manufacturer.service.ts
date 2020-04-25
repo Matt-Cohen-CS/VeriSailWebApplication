@@ -68,7 +68,7 @@ export class ManufacturerService {
 		Retrieves data from the database by the ID
 	*/
 	getManufacturerListByID(id): Observable<any> {
-		return this.http.get<Test[]>(this.ROOT_URL + '/manufacturers' + '/' + id);
+		return this.http.get<Test[]>(this.ROOT_URL + '/manufacturers_id' + '/' + id);
 	}
 	/*
 		Used to retrieve the manufacturerID from the Manufacturer dashboard, used by getManufacturerListByID()
