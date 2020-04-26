@@ -1,1 +1,99 @@
-<p>update-distributors works!</p>
+<mat-toolbar>
+    <span style='display: table-cell;'>
+        <h1>Update Distributor</h1>
+    </span>
+    <span class="fill-remaining-space" style='display: table-cell; width:100%;'></span>
+    <button class="btn-dialog-close" style='display: table-cell;' mat-stroked-button (click)="onClose()" tabIndex="-1">
+        <mat-icon>clear</mat-icon>
+    </button>
+</mat-toolbar>
+<hr>
+<p>
+    <strong> <span> All changes will update Distributor: {{dis.distributorID}}</span></strong>
+</p>
+<form [formGroup]="myForm">
+    <table class="table table-hover" id="updateTable">
+        <thead>
+            <tr>
+                <th scope="col">Attributes</th>
+                <th scope="col">Before Change</th>
+                <th scope="col">After Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" class="align-middle">Distributor Name</th>
+                <td class="align-middle">{{dis.distName}}</td>
+                <td class="align-middle">
+
+                    <mat-form-field>
+                        <input matInput placeholder="Distributor name" formControlName="distName">
+                        <!-- <mat-error *ngIf="manuName.touched">
+                                    Required field
+                                </mat-error> -->
+                    </mat-form-field>
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row" class="align-middle">Street</th>
+                <td class="align-middle">{{dis.street}}</td>
+                <td class="align-middle">
+                    <mat-form-field>
+                        <input matInput placeholder="street" formControlName="street">
+                        <!-- <mat-error *ngIf="street.touched">
+                                    Required field
+                                </mat-error> -->
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" class="align-middle">City</th>
+                <td class="align-middle">{{dis.city}}</td>
+                <td class="align-middle">
+                    <mat-form-field>
+                        <input matInput placeholder="city" formControlName="city">
+                        <!-- <mat-error *ngIf="city.touched">
+                                    Required field
+                                </mat-error> -->
+                    </mat-form-field>
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row" class="align-middle">State</th>
+                <td class="align-middle">{{dis.state}}</td>
+                <td class="align-middle">
+                    <mat-form-field>
+                        <mat-label>{{dis.state}}</mat-label>
+                        <mat-select formControlName="state">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let state of stateArray" [value]="state">{{state}}</mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="state.touched">
+                                    Required field
+                                </mat-error> -->
+                    </mat-form-field>
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row" class="align-middle">Zip Code</th>
+                <td class="align-middle">{{dis.zip}}</td>
+                <td class="align-middle">
+                    <mat-form-field>
+                        <input matInput placeholder="Zip Code" formControlName="zip">
+                        <!-- <mat-error *ngIf="zip.touched">
+                                    Required field. Please use your five digit Zip-Code
+                                </mat-error> -->
+                        <mat-hint align="end">Only five digit Zip-Codes allowed</mat-hint>
+                    </mat-form-field>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <!-- Value: {{myForm.value | json}} -->
+</form>
+<button mat-raised-button type="submit" [disabled]="myForm.invalid" class="btn btn-secondary"
+    (click)="checkCondition()">Update Table</button>

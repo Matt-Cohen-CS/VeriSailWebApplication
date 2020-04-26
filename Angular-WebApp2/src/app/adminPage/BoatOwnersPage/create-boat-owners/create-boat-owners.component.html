@@ -1,0 +1,75 @@
+<body>
+
+
+    <div class="container-fluid">
+        <!-- <div class="row"> -->
+        <!-- App-admin-nav will need this class for it to function correctly -->
+
+        <mat-toolbar>
+            <span style='display: table-cell;'>
+                <h1>Create New Boat Owner</h1>
+            </span>
+            <span class="fill-remaining-space" style='display: table-cell; width:100%;'></span>
+            <button class="btn-dialog-close" style='display: table-cell;' mat-stroked-button (click)="onClose()"
+                tabIndex="-1">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </mat-toolbar>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-6">
+            <!-- </form>   -->
+            <form [formGroup]="myForm">
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <!-- <mat-form-field>
+                                <input matInput placeholder="manufacturer ID" formControlName="manufacturerID">
+
+                                <mat-error *ngIf="manufacturerID.touched">
+                                    Required field
+                                </mat-error>
+                            </mat-form-field> -->
+                            <mat-form-field>
+                                <input matInput placeholder="First Name" formControlName="fName">
+                                <mat-error *ngIf="fName.touched">
+                                    Required field
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Last Name" formControlName="lName">
+                                <mat-error *ngIf="lName.touched">
+                                    Required field
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col">
+                        <div class="form-group">
+                            <mat-form-field>
+                                <input matInput placeholder="Phone" formControlName="phone">
+                                <mat-error *ngIf="phone.touched">
+                                    Required field
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Email" formControlName="email">
+                                <mat-error *ngIf="email.touched">
+                                    Required field. Must be a valid email
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <button mat-raised-button type="submit" [disabled]="myForm.invalid" color="primary"
+                    (click)="submitData()">Submit</button>
+                <button mat-raised-button class="btn btn-light" (click)="onClose()" id="close">No thanks</button>
+                <hr>
+            </form>
+        </main>
+        <!-- </div> -->
+    </div>
+</body>

@@ -6,9 +6,6 @@ body {
 input {
 	color: black;
 }
-input[readonly] {
-	color: rgba(150, 148, 148, 0.514);
-}
 mat-form-field {
 	margin: .5vw;
 }

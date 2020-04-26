@@ -20,44 +20,40 @@
                 </button>
                 <mat-form-field matInput placeholder="Filter" appearance="outline" id="filter"
                     style="padding-left:2vw;">
-                    <mat-label>Search Distributors</mat-label>
+                    <mat-label>Search Boat Owners</mat-label>
                     <mat-icon matPrefix>search</mat-icon>
                     <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search">
                     <!-- <mat-hint>Example: 10001, NJ, West Ave</mat-hint> -->
                 </mat-form-field>
                 <div id="refresh">
-                    <button class="btn btn-light" mat-button color='gray' (click)="postDistributorList()">
+                    <button class="btn btn-light" mat-button color='gray' (click)="postBoatOwnersList()">
                         <mat-icon>refresh</mat-icon>
                     </button>
                 </div>
             </div>
             <table mat-table [dataSource]="listData" matSort>
-                <ng-container matColumnDef="distributorID">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Distributor ID</th>
-                    <td mat-cell *matCellDef="let element">{{element.distributorID}}</td>
+                <ng-container matColumnDef="ownerID">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Owners ID</th>
+                    <td mat-cell *matCellDef="let element">{{element.ownerID}}</td>
                 </ng-container>
-                <ng-container matColumnDef="distName">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Distributor Name</th>
-                    <td mat-cell *matCellDef="let element">{{element.distName}}</td>
+                <ng-container matColumnDef="fName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+                    <td mat-cell *matCellDef="let element">{{element.fName}}</td>
                 </ng-container>
-                <ng-container matColumnDef="street">
-                    <th mat-header-cell *matHeaderCellDef>street</th>
-                    <td mat-cell *matCellDef="let element">{{element.street}}</td>
+                <ng-container matColumnDef="lName">
+                    <th mat-header-cell *matHeaderCellDef>Last Name</th>
+                    <td mat-cell *matCellDef="let element">{{element.lName}}</td>
                 </ng-container>
-                <ng-container matColumnDef="city">
-                    <th mat-header-cell *matHeaderCellDef>city</th>
-                    <td mat-cell *matCellDef="let element">{{element.city}}</td>
+                <ng-container matColumnDef="phone">
+                    <th mat-header-cell *matHeaderCellDef>Phone</th>
+                    <td mat-cell *matCellDef="let element">{{element.phone}}</td>
                 </ng-container>
-                <ng-container matColumnDef="state">
-                    <th mat-header-cell *matHeaderCellDef>state</th>
-                    <td mat-cell *matCellDef="let element">{{element.state}}</td>
-                </ng-container>
-                <ng-container matColumnDef="zip">
-                    <th mat-header-cell *matHeaderCellDef>zip</th>
-                    <td mat-cell *matCellDef="let element">{{element.zip}}</td>
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef>Email</th>
+                    <td mat-cell *matCellDef="let element">{{element.email}}</td>
                 </ng-container>
                 <ng-container matColumnDef="userID">
-                    <th mat-header-cell *matHeaderCellDef>userID</th>
+                    <th mat-header-cell *matHeaderCellDef>User ID</th>
                     <td mat-cell *matCellDef="let element">{{element.userID}}</td>
                 </ng-container>
                 <ng-container matColumnDef="Options">

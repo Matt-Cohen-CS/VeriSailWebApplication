@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ManufacturerService } from 'src/app/Services/API/manufacturer.service';
 import { Test } from 'src/app/Services/sample';
+import { DistributorsService } from 'src/app/Services/API/distributors.service';
+import { BoatOwnersService } from 'src/app/Services/API/boat-owners.service';
+import { RetailersService } from 'src/app/Services/API/retailers.service';
 
 interface Type {
 	value: String;
@@ -19,16 +22,34 @@ interface TypeGroup {
 	styleUrls: [ './create-account.component.css' ]
 })
 export class CreateAccountComponent implements OnInit {
-	some:boolean;
+	some: boolean;
 	myForm: FormGroup;
 	types: String[] = [ 'Distributer', 'Manufacturer' ];
+
 	manu: any[];
-	manName: String[];
-	iterate = 0;
+	dis: any[];
+	boatOwners: any[];
+	retailers: any[];
+
 	type: String;
-	constructor(private fb: FormBuilder, private _apiService: ManufacturerService) {
+	constructor(
+		private fb: FormBuilder,
+		private _apiService: ManufacturerService,
+		private _apiDisService: DistributorsService,
+		private _apiOwnersService: BoatOwnersService,
+		private _apiRetailService: RetailersService
+	) {
 		this._apiService.getManufacturerList().subscribe((data) => {
 			this.manu = data;
+		});
+		this._apiDisService.getDistributor().subscribe((data) => {
+			this.dis = data;
+		});
+		this._apiOwnersService.getBoatOwner().subscribe((data) => {
+			this.boatOwners = data;
+		});
+		this._apiRetailService.getRetailList().subscribe((data) => {
+			this.retailers = data;
 		});
 	}
 
@@ -40,23 +61,22 @@ export class CreateAccountComponent implements OnInit {
 			userName: [ '', [ Validators.required ] ],
 			password: [ '', [ Validators.required ] ],
 			type: [ '', [ Validators.required ] ],
-			theType: [ '']
+			theType: [ '' ]
 			// city: [ '', [ Validators.required ] ],
 			// state: [ '', [ Validators.required ] ]
 		});
 		this.myForm.valueChanges.subscribe(console.log);
 		//this.getName();
-		console.log(this.myForm.value.type=='1');
 	}
 
 	typeGroup: TypeGroup[] = [
 		{
 			name: 'Manufacturer',
-			list: [{
-
-				value:'Anything',
-				viewValue: 'Anythnt'
-			}
+			list: [
+				{
+					value: 'Anything',
+					viewValue: 'Anythnt'
+				}
 			]
 		},
 		{
@@ -69,7 +89,7 @@ export class CreateAccountComponent implements OnInit {
 			]
 		}
 	];
-	getName(){
+	getName() {
 		console.log(this.typeGroup[0].list);
 	}
 }

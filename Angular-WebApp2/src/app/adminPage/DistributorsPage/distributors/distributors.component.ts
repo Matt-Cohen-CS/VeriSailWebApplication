@@ -24,7 +24,7 @@ import { UpdateDistributorsComponent } from '../update-distributors/update-distr
 	styleUrls: [ './distributors.component.css' ]
 })
 export class DistributorsComponent implements OnInit {
-	curOrderNum;
+	curDisID;
 	constructor(
 		private _apiService: DistributorsService,
 		private dialog: MatDialog,
@@ -65,9 +65,9 @@ export class DistributorsComponent implements OnInit {
 		});
 	}
 	onEdit(row) {
-		this.curOrderNum = row.orderNum;
-		this._sendForm.sendForm(this.curOrderNum);
-		this._apiService.sendData(this.curOrderNum);
+		this.curDisID = row.distributorID;
+		this._sendForm.sendForm(this.curDisID);
+		this._apiService.sendData(this.curDisID);
 		this._apiService.setForm(row);
 		const dialogConfig = this.dialog.open(UpdateDistributorsComponent, {
 			width: '800px',

@@ -52,6 +52,12 @@ import { CreateLabelOrdersComponent } from './adminPage/labelOrdersPage/create-l
 import { DistributorsComponent } from './adminPage/DistributorsPage/distributors/distributors.component';
 import { CreateDistributorsComponent } from './adminPage/DistributorsPage/create-distributors/create-distributors.component';
 import { UpdateDistributorsComponent } from './adminPage/DistributorsPage/update-distributors/update-distributors.component';
+import { BoatOwnersComponent } from './adminPage/BoatOwnersPage/boat-owners/boat-owners.component';
+import { CreateBoatOwnersComponent } from './adminPage/BoatOwnersPage/create-boat-owners/create-boat-owners.component';
+import { UpdateBoatOwnersComponent } from './adminPage/BoatOwnersPage/update-boat-owners/update-boat-owners.component';
+import { RetailersComponent } from './adminPage/RetailersPage/retailers/retailers.component';
+import { UpdateretailersComponent } from './adminPage/RetailersPage/updateretailers/updateretailers.component';
+import { CreateRetailersComponent } from './adminPage/RetailersPage/create-retailers/create-retailers.component';
 
 @NgModule({
 	declarations: [
@@ -80,7 +86,13 @@ import { UpdateDistributorsComponent } from './adminPage/DistributorsPage/update
 		CreateLabelOrdersComponent,
 		DistributorsComponent,
 		CreateDistributorsComponent,
-		UpdateDistributorsComponent
+		UpdateDistributorsComponent,
+		BoatOwnersComponent,
+		CreateBoatOwnersComponent,
+		UpdateBoatOwnersComponent,
+		RetailersComponent,
+		UpdateretailersComponent,
+		CreateRetailersComponent
 	],
 	imports: [
 		BrowserModule,
@@ -117,7 +129,13 @@ import { UpdateDistributorsComponent } from './adminPage/DistributorsPage/update
 		CreateManufacturerComponent,
 		UpdateManufacturerComponent,
 		CreateLabelOrdersComponent,
-		UpdateLabelOrdersComponent
+		UpdateLabelOrdersComponent,
+		CreateDistributorsComponent,
+		UpdateDistributorsComponent,
+		CreateBoatOwnersComponent,
+		UpdateBoatOwnersComponent,
+		UpdateretailersComponent,
+		CreateRetailersComponent
 	]
 })
 export class AppModule {}

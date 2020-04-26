@@ -1,32 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NotificationService } from 'src/app/Services/notification.service';
-import { DistributorsService } from 'src/app/Services/API/distributors.service';
-import { SendFormService } from 'src/app/Services/send-form.service';
 import { MatDialogRef } from '@angular/material';
+import { RetailersService } from 'src/app/Services/API/retailers.service';
+import { SendFormService } from 'src/app/Services/send-form.service';
 
 @Component({
-	selector: 'app-update-distributors',
-	templateUrl: './update-distributors.component.html',
-	styleUrls: [ './update-distributors.component.css' ]
+	selector: 'app-updateretailers',
+	templateUrl: './updateretailers.component.html',
+	styleUrls: [ './updateretailers.component.css' ]
 })
-export class UpdateDistributorsComponent implements OnInit {
-	dis = { distributorID: '' }; //TO GET RID OF ERROR OF 'cannot find manufacturerID of undefined'
-	//manu: Test[];
+export class UpdateretailersComponent implements OnInit {
+	retailers = { retailID: '' }; //TO GET RID OF ERROR OF 'cannot find manufacturerID of undefined'
 	userID: any;
-	curDisID;
+	curRetailID;
 	myForm: FormGroup;
 	checkForm: FormGroup;
 	serviceData: string;
 	constructor(
 		private _formService: SendFormService,
 		private fb: FormBuilder,
-		private _apiService: DistributorsService,
-		public dialogRef: MatDialogRef<UpdateDistributorsComponent>, //@Inject(MAT_DIALOG_DATA) public data: ManufacturerComponent
+		private _apiService: RetailersService,
+		public dialogRef: MatDialogRef<UpdateretailersComponent>, //@Inject(MAT_DIALOG_DATA) public data: ManufacturerComponent
 		public notificiationService: NotificationService
 	) {}
-	// subs = new SubSink();
-
 	stateArray: string[] = [
 		'AL : Alabama',
 		'AK : Alaska',
@@ -80,20 +77,20 @@ export class UpdateDistributorsComponent implements OnInit {
 		'WY : Wyoming'
 	];
 	ngOnInit() {
-		this.curDisID = this._apiService.returnData();
+		this.curRetailID = this._apiService.returnData();
 
-		this._apiService.getDistributorByID(this.curDisID).subscribe((data) => {
-			this.dis = data;
+		this._apiService.getRetailListByID(this.curRetailID).subscribe((data) => {
+			this.retailers = data;
 		});
 
 		this.myForm = this.fb.group({
-			distributorID: [
-				this.curDisID,
+			reatilID: [
+				this.curRetailID,
 				[
 					// Validators.required
 				]
 			],
-			distName: [
+			retailName: [
 				'',
 				[
 					//  Validators.required
@@ -106,13 +103,13 @@ export class UpdateDistributorsComponent implements OnInit {
 					Validators.minLength(5)
 				]
 			],
-			city: [
+			street: [
 				'',
 				[
 					// Validators.required
 				]
 			],
-			street: [
+			city: [
 				'',
 				[
 					//Validators.required
@@ -132,13 +129,13 @@ export class UpdateDistributorsComponent implements OnInit {
 			]
 		});
 		this.checkForm = this.fb.group({
-			distributorID: [
-				this.curDisID,
+			retailID: [
+				this.curRetailID,
 				[
 					// Validators.required
 				]
 			],
-			distName: [
+			retailName: [
 				'',
 				[
 					//  Validators.required
@@ -151,13 +148,13 @@ export class UpdateDistributorsComponent implements OnInit {
 					Validators.minLength(5)
 				]
 			],
-			city: [
+			street: [
 				'',
 				[
 					// Validators.required
 				]
 			],
-			street: [
+			city: [
 				'',
 				[
 					//Validators.required
@@ -180,14 +177,14 @@ export class UpdateDistributorsComponent implements OnInit {
 		this.checkForm.setValue(this._apiService.getForm());
 	}
 	createManu(data: any) {
-		this.dis = data;
+		this.retailers = data;
 		//console.log(this.manu);
 	}
 
 	getMyPost(id: string) {
 		console.log(id);
-		this._apiService.getDistributorByID(id).subscribe((data) => {
-			this.dis = data;
+		this._apiService.getRetailListByID(id).subscribe((data) => {
+			this.retailers = data;
 			//console.log('In Post', this.manu);
 		});
 	}
@@ -220,7 +217,7 @@ export class UpdateDistributorsComponent implements OnInit {
 			this.notificiationService.warn(':: Same Data');
 		}
 		else {
-			this._apiService.updateDistributor(this.curDisID, this.myForm.value).subscribe((data) => {
+			this._apiService.updateRetailer(this.curRetailID, this.myForm.value).subscribe((data) => {
 				//console.log(data);
 			});
 			this.onClose();
@@ -241,11 +238,11 @@ export class UpdateDistributorsComponent implements OnInit {
 	/*
    Getters, this is for error checking
    */
-	get manufacturerID() {
-		return this.myForm.get('manufacturerID');
+	get retailID() {
+		return this.myForm.get('retailID');
 	}
-	get manuName() {
-		return this.myForm.get('manuName');
+	get retailName() {
+		return this.myForm.get('retailName');
 	}
 	get zip() {
 		return this.myForm.get('zip');
@@ -260,3 +257,10 @@ export class UpdateDistributorsComponent implements OnInit {
 		return this.myForm.get('city');
 	}
 }
+// retailID: string;
+// retailName: string;
+// street: string;
+// city: string;
+// state: string;
+// zip: string;
+// userID?: string;

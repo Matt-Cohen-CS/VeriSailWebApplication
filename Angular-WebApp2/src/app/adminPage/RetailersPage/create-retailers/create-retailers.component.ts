@@ -1,24 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Test } from 'src/app/Services/sample';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SendFormService } from 'src/app/Services/send-form.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NotificationService } from 'src/app/Services/notification.service';
-import { DistributorsService } from 'src/app/Services/API/distributors.service';
+import { MatDialogRef } from '@angular/material';
+import { SendFormService } from 'src/app/Services/send-form.service';
+import { ManufacturerService } from 'src/app/Services/API/manufacturer.service';
+import { Retail } from 'src/app/Services/retailers';
+import { RetailersService } from 'src/app/Services/API/retailers.service';
 
 @Component({
-	selector: 'app-create-distributors',
-	templateUrl: './create-distributors.component.html',
-	styleUrls: [ './create-distributors.component.css' ]
+	selector: 'app-create-retailers',
+	templateUrl: './create-retailers.component.html',
+	styleUrls: [ './create-retailers.component.css' ]
 })
-export class CreateDistributorsComponent implements OnInit {
+export class CreateRetailersComponent implements OnInit {
+	reatiler: Retail[];
 	myForm: FormGroup;
-
+	idNumber: string;
 	constructor(
-		private _apiService: DistributorsService,
+		private _apiService: RetailersService,
 		private fb: FormBuilder,
 		private _sendForm: SendFormService,
-		public dialogRef: MatDialogRef<CreateDistributorsComponent>, //@Inject(MAT_DIALOG_DATA) public data: ManufacturerComponent
+		public dialogRef: MatDialogRef<CreateRetailersComponent>, //@Inject(MAT_DIALOG_DATA) public data: ManufacturerComponent
 		public notificiationService: NotificationService
 	) {}
 	stateArray: string[] = [
@@ -75,27 +77,28 @@ export class CreateDistributorsComponent implements OnInit {
 	];
 	ngOnInit() {
 		this.myForm = this.fb.group({
-			distributorID: [
+			retailID: [
 				null,
 				[
 					//Validators.required
 				]
 			],
-			distName: [ '', [ Validators.required ] ],
-			street: [ { value: '', disabled: false }, [ Validators.required ] ],
-			city: [ { value: '', disabled: false }, [ Validators.required ] ],
-			state: [ '', [ Validators.required ] ],
+			retailName: [ '', [ Validators.required ] ],
 			zip: [ '', [ Validators.required, Validators.minLength(5) ] ],
-			userID: [ null, [] ]
+			street: [ '', [ Validators.required ] ],
+			city: [ '', [ Validators.required ] ],
+			state: [ '', [ Validators.required ] ]
 		});
+		this.myForm.valueChanges.subscribe(console.log);
 	}
 
 	/*
   Posts the manufacturer data to the database
   */
 	submitData() {
+		this.reatiler = [];
 		this._apiService
-			.addDistributor(this.myForm.value)
+			.addRetailer(this.myForm.value)
 			.subscribe((response) => console.log('Success!', response), (error) => console.error('Error', error));
 		this.onClose();
 		this.notificiationService.success('! Submitted Successfully');
@@ -104,29 +107,38 @@ export class CreateDistributorsComponent implements OnInit {
 		this.myForm.reset();
 		this.dialogRef.close();
 	}
+	/*
+  */
+	editManu(i: string) {
+		this._sendForm.sendForm(i);
+	}
 
 	/*
   Getters, this is for Validators
   */
-	get distributorID() {
-		return this.myForm.get('distributorID');
+	get retailID() {
+		return this.myForm.get('retailID');
 	}
-	get distName() {
-		return this.myForm.get('distName');
-	}
-	get street() {
-		return this.myForm.get('street');
-	}
-	get city() {
-		return this.myForm.get('city');
-	}
-	get state() {
-		return this.myForm.get('state');
+	get retailName() {
+		return this.myForm.get('retailName');
 	}
 	get zip() {
 		return this.myForm.get('zip');
 	}
-	get userID() {
-		return this.myForm.get('userID');
+	get street() {
+		return this.myForm.get('street');
+	}
+	get state() {
+		return this.myForm.get('state');
+	}
+	get city() {
+		return this.myForm.get('city');
 	}
 }
+// retailID: string;
+// retailName: string;
+// street: string;
+// city: string;
+// state: string;
+// zip: string;
+// userID?: string;
