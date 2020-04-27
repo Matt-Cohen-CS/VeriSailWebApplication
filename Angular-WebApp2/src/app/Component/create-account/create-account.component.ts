@@ -5,16 +5,8 @@ import { Test } from 'src/app/Services/sample';
 import { DistributorsService } from 'src/app/Services/API/distributors.service';
 import { BoatOwnersService } from 'src/app/Services/API/boat-owners.service';
 import { RetailersService } from 'src/app/Services/API/retailers.service';
-
-interface Type {
-	value: String;
-	viewValue: String;
-}
-
-interface TypeGroup {
-	name: String;
-	list: Type[];
-}
+import { UsersService } from 'src/app/Services/API/users.service';
+import * as _ from 'lodash';
 
 @Component({
 	selector: 'app-create-account',
@@ -24,8 +16,7 @@ interface TypeGroup {
 export class CreateAccountComponent implements OnInit {
 	some: boolean;
 	myForm: FormGroup;
-	types: String[] = [ 'Distributer', 'Manufacturer' ];
-
+	myForm1: FormGroup;
 	manu: any[];
 	dis: any[];
 	boatOwners: any[];
@@ -37,7 +28,8 @@ export class CreateAccountComponent implements OnInit {
 		private _apiService: ManufacturerService,
 		private _apiDisService: DistributorsService,
 		private _apiOwnersService: BoatOwnersService,
-		private _apiRetailService: RetailersService
+		private _apiRetailService: RetailersService,
+		private _apiUserService: UsersService
 	) {
 		this._apiService.getManufacturerList().subscribe((data) => {
 			this.manu = data;
@@ -57,7 +49,18 @@ export class CreateAccountComponent implements OnInit {
 		this.myForm = this.fb.group({
 			firstName: [ '', [ Validators.required ] ],
 			lastName: [ '', [ Validators.required ] ],
-			email: [ '', [ Validators.required, Validators.minLength(5) ] ],
+			email: [ '', [ Validators.required, Validators.email ] ],
+			userName: [ '', [ Validators.required ] ],
+			password: [ '', [ Validators.required ] ],
+			type: [ '', [ Validators.required ] ],
+			theType: [ '' ]
+			// city: [ '', [ Validators.required ] ],
+			// state: [ '', [ Validators.required ] ]
+		});
+		this.myForm1 = this.fb.group({
+			firstName: [ '', [ Validators.required ] ],
+			lastName: [ '', [ Validators.required ] ],
+			email: [ '', [ Validators.required, Validators.email ] ],
 			userName: [ '', [ Validators.required ] ],
 			password: [ '', [ Validators.required ] ],
 			type: [ '', [ Validators.required ] ],
@@ -68,28 +71,26 @@ export class CreateAccountComponent implements OnInit {
 		this.myForm.valueChanges.subscribe(console.log);
 		//this.getName();
 	}
-
-	typeGroup: TypeGroup[] = [
-		{
-			name: 'Manufacturer',
-			list: [
-				{
-					value: 'Anything',
-					viewValue: 'Anythnt'
-				}
-			]
-		},
-		{
-			name: 'Distributer',
-			list: [
-				{
-					value: '1',
-					viewValue: '1'
-				}
-			]
+	onSubmit() {
+		if (this.myForm.get('type').value === 'Manufacturer') {
+			this.myForm.get('type').setValue('2');
 		}
-	];
-	getName() {
-		console.log(this.typeGroup[0].list);
+		else if (this.myForm.get('type').value === 'Distributor') {
+			this.myForm.get('type').setValue('3');
+		}
+		else if (this.myForm.get('type').value === 'Boat Owner') {
+			this.myForm.get('type').setValue('5');
+		}
+		else if (this.myForm.get('type').value === 'ILCA') {
+			this.myForm.get('type').setValue('1');
+		}
+		else if (this.myForm.get('type').value === 'Retailer') {
+			this.myForm.get('type').setValue('4');
+		}
+		console.log(this.myForm.value);
+		console.log(_.omit(this.myForm, 'firstName', 'lastName', 'email', 'theType'));
+		// this._apiUserService
+		// 	.addUser(_.omit(this.myForm.value,''))
+		// 	.subscribe((response) => console.log('Success!', response), (error) => console.error('Error', error));
 	}
 }
