@@ -49,11 +49,14 @@ export class LabelOrdersComponent implements OnInit {
 			this.listData.sort = this.sort;
 			this.listData.paginator = this.paginator;
 			for (let end of data) {
+				let partn = end.partName;
 				if (+end.QR_end > this.lastQR) {
 					this.lastQR = +end.QR_end;
 				}
+				
+				this._apiService.sendQRCode(this.lastQR);
 			}
-			this._apiService.sendQRCode(this.lastQR);
+			
 		});
 	}
 	applyFilter(filterValue: String) {

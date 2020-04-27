@@ -84,7 +84,7 @@ export class UpdateretailersComponent implements OnInit {
 		});
 
 		this.myForm = this.fb.group({
-			reatilID: [
+			retailID: [
 				this.curRetailID,
 				[
 					// Validators.required

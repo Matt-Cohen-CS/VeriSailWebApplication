@@ -6,7 +6,20 @@ import { DistributorsService } from 'src/app/Services/API/distributors.service';
 import { BoatOwnersService } from 'src/app/Services/API/boat-owners.service';
 import { RetailersService } from 'src/app/Services/API/retailers.service';
 import { UsersService } from 'src/app/Services/API/users.service';
+<<<<<<< HEAD
 import * as _ from 'lodash';
+=======
+
+interface Type {
+	value: String;
+	viewValue: String;
+}
+
+interface TypeGroup {
+	name: String;
+	list: Type[];
+}
+>>>>>>> de1b18fd489953ed8f4ad4c05359f3275391bfa4
 
 @Component({
 	selector: 'app-create-account',
@@ -63,7 +76,7 @@ export class CreateAccountComponent implements OnInit {
 			email: [ '', [ Validators.required, Validators.email ] ],
 			userName: [ '', [ Validators.required ] ],
 			password: [ '', [ Validators.required ] ],
-			type: [ '', [ Validators.required ] ],
+			typeID: [ '', [ Validators.required ] ],
 			theType: [ '' ]
 			// city: [ '', [ Validators.required ] ],
 			// state: [ '', [ Validators.required ] ]
@@ -71,6 +84,7 @@ export class CreateAccountComponent implements OnInit {
 		this.myForm.valueChanges.subscribe(console.log);
 		//this.getName();
 	}
+<<<<<<< HEAD
 	onSubmit() {
 		if (this.myForm.get('type').value === 'Manufacturer') {
 			this.myForm.get('type').setValue('2');
@@ -92,5 +106,18 @@ export class CreateAccountComponent implements OnInit {
 		// this._apiUserService
 		// 	.addUser(_.omit(this.myForm.value,''))
 		// 	.subscribe((response) => console.log('Success!', response), (error) => console.error('Error', error));
+=======
+
+	onSubmit(){
+		this._apiService.getManufacturerList().subscribe((data) => {
+			this.manu = data;
+		});
+>>>>>>> de1b18fd489953ed8f4ad4c05359f3275391bfa4
 	}
 }
+// ILCA 1
+// Manu 2...
+// Dis 3
+// Retailer 4
+// Boat owner 5
+// Other: 6
