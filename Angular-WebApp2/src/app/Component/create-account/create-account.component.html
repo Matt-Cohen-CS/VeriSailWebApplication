@@ -93,7 +93,7 @@
                     </mat-form-field> -->
                     <mat-form-field class="halfwidth" appearance="outline">
                         <mat-label>Type of User</mat-label>
-                        <mat-select formControlName ="type">
+                        <mat-select formControlName ="typeID">
                             <mat-option>-- None --</mat-option>
                             <mat-option value="Manufacturer">Manufacturer</mat-option>
                             <mat-option value="Distributor">Distributor</mat-option>
@@ -103,7 +103,7 @@
                         </mat-select>
                         
                     </mat-form-field>
-                    <mat-form-field class="halfwidth" appearance="outline" *ngIf="myForm.value.type == 'Manufacturer' ">
+                    <mat-form-field class="halfwidth" appearance="outline" *ngIf="myForm.value.typeID == 'Manufacturer' ">
                         <mat-label>Manufacturer Names</mat-label>
                         <mat-select formControlName="theType"> 
                             <mat-option value=''>-- None --</mat-option>
@@ -116,7 +116,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="halfwidth" appearance="outline"
-                        *ngIf="myForm.value.type == 'Distributor'">
+                        *ngIf="myForm.value.typeID == 'Distributor'">
                         <mat-label>Distributor Names</mat-label>
                         <mat-select formControlName="theType">
                             <mat-option value=''>-- None --</mat-option>
@@ -128,7 +128,7 @@
                     
                     </mat-form-field>
 
-                    <mat-form-field class="halfwidth" appearance="outline" *ngIf="myForm.value.type == 'Boat Owners'">
+                    <mat-form-field class="halfwidth" appearance="outline" *ngIf="myForm.value.typeID == 'Boat Owners'">
                         <mat-label>Boat Owners</mat-label>
                         <mat-select formControlName="theType">
                             <mat-option value=''>-- None --</mat-option>
@@ -138,7 +138,7 @@
                         </mat-select>    
                     </mat-form-field>
 
-                    <mat-form-field class="halfwidth" appearance="outline" *ngIf="myForm.value.type == 'Retailer'">
+                    <mat-form-field class="halfwidth" appearance="outline" *ngIf="myForm.value.typeID == 'Retailer'">
                         <mat-label>Retailer Names</mat-label>
                         <mat-select formControlName="theType">
                             <mat-option value=''>-- None --</mat-option>
@@ -149,10 +149,10 @@
                     </mat-form-field>
 
                     <div class = "halfwidth1">
-                        <button (click)="onSubmit()" class="btn btn-success">
+                        <button (click)="onSubmit()" [disabled]="myForm.invalid" class="btn btn-success">
                             Create Account
                         </button> 
-                        <a id="moveRight"routerLink="/home">
+                        <a id="moveRight"routerLink="/signin">
                             Go Back
                         </a>
                     </div>

@@ -5,6 +5,7 @@ import { Test } from 'src/app/Services/sample';
 import { DistributorsService } from 'src/app/Services/API/distributors.service';
 import { BoatOwnersService } from 'src/app/Services/API/boat-owners.service';
 import { RetailersService } from 'src/app/Services/API/retailers.service';
+import { UsersService } from 'src/app/Services/API/users.service';
 
 interface Type {
 	value: String;
@@ -37,7 +38,8 @@ export class CreateAccountComponent implements OnInit {
 		private _apiService: ManufacturerService,
 		private _apiDisService: DistributorsService,
 		private _apiOwnersService: BoatOwnersService,
-		private _apiRetailService: RetailersService
+		private _apiRetailService: RetailersService,
+		private _apiUserService: UsersService
 	) {
 		this._apiService.getManufacturerList().subscribe((data) => {
 			this.manu = data;
@@ -60,7 +62,7 @@ export class CreateAccountComponent implements OnInit {
 			email: [ '', [ Validators.required, Validators.minLength(5) ] ],
 			userName: [ '', [ Validators.required ] ],
 			password: [ '', [ Validators.required ] ],
-			type: [ '', [ Validators.required ] ],
+			typeID: [ '', [ Validators.required ] ],
 			theType: [ '' ]
 			// city: [ '', [ Validators.required ] ],
 			// state: [ '', [ Validators.required ] ]
@@ -69,27 +71,15 @@ export class CreateAccountComponent implements OnInit {
 		//this.getName();
 	}
 
-	typeGroup: TypeGroup[] = [
-		{
-			name: 'Manufacturer',
-			list: [
-				{
-					value: 'Anything',
-					viewValue: 'Anythnt'
-				}
-			]
-		},
-		{
-			name: 'Distributer',
-			list: [
-				{
-					value: '1',
-					viewValue: '1'
-				}
-			]
-		}
-	];
-	getName() {
-		console.log(this.typeGroup[0].list);
+	onSubmit(){
+		this._apiService.getManufacturerList().subscribe((data) => {
+			this.manu = data;
+		});
 	}
 }
+// ILCA 1
+// Manu 2...
+// Dis 3
+// Retailer 4
+// Boat owner 5
+// Other: 6
