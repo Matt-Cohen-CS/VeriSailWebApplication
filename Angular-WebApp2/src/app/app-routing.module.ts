@@ -17,13 +17,13 @@ const routes: Routes = [
 	// { path: 'form', component: Form1Component },
 	{ path: 'signin', component: SignInComponent },
 	// { path: 'admin', component: DashboardComponent }, //deprecated
-	// { path: 'create', component: CreateAccountComponent },
-	{ path: 'manu', component: ManufacturerComponent }, //Change
+	{ path: 'create', component: CreateAccountComponent }, //deprecated
+	{ path: 'manu', component: ManufacturerComponent },
 	{ path: 'manu/:id', component: ManufacturerComponent },
 	// { path: 'dashboard', component: DashboardComponent }, //deprecated
 	// { path: 'dashboard/:id', component: DashboardComponent }, //deprecated
 	// { path: 'createManu/:id', component: CreateManuComponent }, // deprecated
-	{ path: 'labelorders', component: LabelOrdersComponent }, //Change
+	{ path: 'labelorders', component: LabelOrdersComponent },
 	{ path: 'dist', component: DistributorsComponent },
 	{ path: 'boatowners', component: BoatOwnersComponent },
 	{ path: 'retail', component: RetailersComponent },
