@@ -56,6 +56,7 @@ import { UpdateBoatOwnersComponent } from './adminPage/BoatOwnersPage/update-boa
 import { RetailersComponent } from './adminPage/RetailersPage/retailers/retailers.component';
 import { UpdateretailersComponent } from './adminPage/RetailersPage/updateretailers/updateretailers.component';
 import { CreateRetailersComponent } from './adminPage/RetailersPage/create-retailers/create-retailers.component';
+import { EventInspectionsComponent } from './adminPage/EventsPage/event-inspections/event-inspections.component';
 
 @NgModule({
 	declarations: [
@@ -89,7 +90,8 @@ import { CreateRetailersComponent } from './adminPage/RetailersPage/create-retai
 		UpdateBoatOwnersComponent,
 		RetailersComponent,
 		UpdateretailersComponent,
-		CreateRetailersComponent
+		CreateRetailersComponent,
+		EventInspectionsComponent
 	],
 	imports: [
 		BrowserModule,
