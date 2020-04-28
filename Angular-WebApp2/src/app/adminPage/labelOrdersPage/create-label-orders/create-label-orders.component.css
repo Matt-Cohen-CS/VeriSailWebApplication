@@ -10,7 +10,7 @@ input[readonly] {
 	color: rgba(150, 148, 148, 0.514);
 }
 mat-form-field {
-	margin: .5vw;
+	margin: .4vw;
 }
 #close {
 	margin: 1vw;

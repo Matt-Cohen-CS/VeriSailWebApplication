@@ -9,7 +9,7 @@
 </mat-toolbar>
 <hr>
 <p>
-    <strong> <span> All changes will update Distributor: {{dis.distributorID}}</span></strong>
+    <strong> <span> All changes will update Distributor: {{curDisID}}</span></strong>
 </p>
 <form [formGroup]="myForm">
     <table class="table table-hover" id="updateTable">
@@ -23,11 +23,14 @@
         <tbody>
             <tr>
                 <th scope="row" class="align-middle">Distributor Name</th>
-                <td class="align-middle">{{dis.distName}}</td>
+                <td class="align-middle">
+                <mat-form-field>
+                    <input matInput formControlName="distName" readonly>
+                </mat-form-field></td>
                 <td class="align-middle">
 
-                    <mat-form-field>
-                        <input matInput placeholder="Distributor name" formControlName="distName">
+                    <mat-form-field appearance="outline">
+                        <input matInput placeholder="Distributor name" formControlName="distName" cdkFocusInitial>
                         <!-- <mat-error *ngIf="manuName.touched">
                                     Required field
                                 </mat-error> -->
@@ -37,9 +40,13 @@
             </tr>
             <tr>
                 <th scope="row" class="align-middle">Street</th>
-                <td class="align-middle">{{dis.street}}</td>
                 <td class="align-middle">
                     <mat-form-field>
+                        <input matInput formControlName="street" readonly>
+                    </mat-form-field>
+                </td>
+                <td class="align-middle">
+                    <mat-form-field appearance="outline">
                         <input matInput placeholder="street" formControlName="street">
                         <!-- <mat-error *ngIf="street.touched">
                                     Required field
@@ -49,9 +56,12 @@
             </tr>
             <tr>
                 <th scope="row" class="align-middle">City</th>
-                <td class="align-middle">{{dis.city}}</td>
                 <td class="align-middle">
-                    <mat-form-field>
+                <mat-form-field>
+                    <input matInput  formControlName="city" readonly>
+                </mat-form-field></td>
+                <td class="align-middle">
+                    <mat-form-field appearance="outline">
                         <input matInput placeholder="city" formControlName="city">
                         <!-- <mat-error *ngIf="city.touched">
                                     Required field
@@ -62,10 +72,10 @@
             </tr>
             <tr>
                 <th scope="row" class="align-middle">State</th>
-                <td class="align-middle">{{dis.state}}</td>
+                <td class="align-middle">{{currentState}}</td>
                 <td class="align-middle">
-                    <mat-form-field>
-                        <mat-label>{{dis.state}}</mat-label>
+                    <mat-form-field appearance="outline">
+                        <mat-label>{{currentState}}</mat-label>
                         <mat-select formControlName="state">
                             <mat-option>None</mat-option>
                             <mat-option *ngFor="let state of stateArray" [value]="state">{{state}}</mat-option>
@@ -79,9 +89,12 @@
             </tr>
             <tr>
                 <th scope="row" class="align-middle">Zip Code</th>
-                <td class="align-middle">{{dis.zip}}</td>
                 <td class="align-middle">
-                    <mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="zip" readonly>
+                </mat-form-field></td>
+                <td class="align-middle">
+                    <mat-form-field appearance="outline">
                         <input matInput placeholder="Zip Code" formControlName="zip">
                         <!-- <mat-error *ngIf="zip.touched">
                                     Required field. Please use your five digit Zip-Code

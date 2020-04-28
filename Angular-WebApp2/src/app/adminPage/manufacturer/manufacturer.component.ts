@@ -14,7 +14,6 @@ import {
 } from '@angular/material';
 import { ManufacturerService } from 'src/app/Services/API/manufacturer.service';
 import { registerEscClick } from 'ngx-bootstrap/utils/triggers';
-import { CreateManuComponent } from '../create-manu/create-manu.component';
 import { CreateManufacturerComponent } from '../create-manufacturer/create-manufacturer.component';
 import { UpdateManufacturerComponent } from '../update-manufacturer/update-manufacturer.component';
 

@@ -41,7 +41,6 @@ import { AdminHeaderComponent } from './adminPage/admin-header/admin-header.comp
 import { AdminNavComponent } from './adminPage/admin-nav/admin-nav.component';
 import { ManufacturerComponent } from './adminPage/manufacturer/manufacturer.component';
 import { DashboardComponent } from './adminPage/dashboard/dashboard.component';
-import { CreateManuComponent } from './adminPage/create-manu/create-manu.component';
 import { HeaderComponent } from './Component/header/header.component';
 import { CreateManufacturerComponent } from './adminPage/create-manufacturer/create-manufacturer.component';
 import { UpdateManufacturerComponent } from './adminPage/update-manufacturer/update-manufacturer.component';
@@ -77,7 +76,6 @@ import { CreateRetailersComponent } from './adminPage/RetailersPage/create-retai
 		AdminNavComponent,
 		ManufacturerComponent,
 		DashboardComponent,
-		CreateManuComponent,
 		CreateManufacturerComponent,
 		UpdateManufacturerComponent,
 		LabelOrdersComponent,
@@ -124,7 +122,6 @@ import { CreateRetailersComponent } from './adminPage/RetailersPage/create-retai
 		Used for MatDialog popups
 	*/
 	entryComponents: [
-		CreateManuComponent,
 		CreateManufacturerComponent,
 		UpdateManufacturerComponent,
 		CreateLabelOrdersComponent,

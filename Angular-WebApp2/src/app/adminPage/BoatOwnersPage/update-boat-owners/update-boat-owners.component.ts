@@ -4,6 +4,7 @@ import { SendFormService } from 'src/app/Services/send-form.service';
 import { BoatOwnersService } from 'src/app/Services/API/boat-owners.service';
 import { MatDialogRef } from '@angular/material';
 import { NotificationService } from 'src/app/Services/notification.service';
+import { BoatOwners } from 'src/app/Services/boatOwnersInterface';
 
 @Component({
 	selector: 'app-update-boat-owners',
@@ -11,8 +12,8 @@ import { NotificationService } from 'src/app/Services/notification.service';
 	styleUrls: [ './update-boat-owners.component.css' ]
 })
 export class UpdateBoatOwnersComponent implements OnInit {
-	boatowners = { ownerID: '' }; //TO GET RID OF ERROR OF 'cannot find manufacturerID of undefined'
-	//manu: Test[];
+	//boatowners = [ { ownerID: '', fName: '', lName: '', phone: '', email: '', userID: '' } ]; //TO GET RID OF ERROR OF 'cannot find manufacturerID of undefined'
+	disabled = false;
 	userID1: any;
 	curBoatOwnerID;
 	myForm: FormGroup;
@@ -30,7 +31,7 @@ export class UpdateBoatOwnersComponent implements OnInit {
 		this.curBoatOwnerID = this._apiService.returnData();
 
 		this._apiService.getBoatOwnerByID(this.curBoatOwnerID).subscribe((data) => {
-			this.boatowners = data;
+			//this.boatowners = data;
 		});
 
 		this.myForm = this.fb.group({
@@ -41,7 +42,7 @@ export class UpdateBoatOwnersComponent implements OnInit {
 				]
 			],
 			fName: [
-				'',
+				{ value: '', disabled: false },
 				[
 					//  Validators.required
 				]
@@ -100,14 +101,14 @@ export class UpdateBoatOwnersComponent implements OnInit {
 		this.checkForm.setValue(this._apiService.getForm());
 	}
 	createManu(data: any) {
-		this.boatowners = data;
+		//this.boatowners = data;
 		//console.log(this.manu);
 	}
 
 	getMyPost(id: string) {
 		console.log(id);
 		this._apiService.getBoatOwnerByID(id).subscribe((data) => {
-			this.boatowners = data;
+			//this.boatowners = data;
 			//console.log('In Post', this.manu);
 		});
 	}

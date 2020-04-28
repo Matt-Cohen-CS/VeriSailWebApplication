@@ -15,13 +15,14 @@ import { ManufacturerComponent } from '../manufacturer/manufacturer.component';
 	styleUrls: [ './update-manufacturer.component.css' ]
 })
 export class UpdateManufacturerComponent implements OnInit {
-	manu = { manufacturerID: '' }; //TO GET RID OF ERROR OF 'cannot find manufacturerID of undefined'
-	//manu: Test[];
+	//manu = [ { manufacturerID: '', manuName: '', zip: '', street: '', city: '', state: '', userID: '' } ]; //TO GET RID OF ERROR OF 'cannot find manufacturerID of undefined'
+
 	userID: any;
 	curManuID;
 	myForm: FormGroup;
 	checkForm: FormGroup;
 	serviceData: string;
+	currentState;
 	constructor(
 		private _formService: SendFormService,
 		private fb: FormBuilder,
@@ -88,7 +89,8 @@ export class UpdateManufacturerComponent implements OnInit {
 		this.curManuID = this._apiService.returnData();
 
 		this._apiService.getManufacturerListByID(this.curManuID).subscribe((data) => {
-			this.manu = data;
+			//this.manu = data;
+			this.currentState = data.state;
 		});
 
 		this.myForm = this.fb.group({
@@ -185,14 +187,14 @@ export class UpdateManufacturerComponent implements OnInit {
 		this.checkForm.setValue(this._apiService.getForm());
 	}
 	createManu(data: any) {
-		this.manu = data;
+		//this.manu = data;
 		//console.log(this.manu);
 	}
 
 	getMyPost(id: string) {
 		console.log(id);
 		this._apiService.getManufacturerListByID(id).subscribe((data) => {
-			this.manu = data;
+			//this.manu = data;
 			//console.log('In Post', this.manu);
 		});
 	}

@@ -7,7 +7,6 @@ import { SignInComponent } from './Component/sign-in/sign-in.component';
 import { CreateAccountComponent } from './Component/create-account/create-account.component';
 import { ManufacturerComponent } from './adminPage/manufacturer/manufacturer.component';
 import { DashboardComponent } from './adminPage/dashboard/dashboard.component';
-import { CreateManuComponent } from './adminPage/create-manu/create-manu.component';
 import { LabelOrdersComponent } from './adminPage/labelOrdersPage/label-orders/label-orders.component';
 import { DistributorsComponent } from './adminPage/DistributorsPage/distributors/distributors.component';
 import { BoatOwnersComponent } from './adminPage/BoatOwnersPage/boat-owners/boat-owners.component';

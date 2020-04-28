@@ -4,6 +4,7 @@ import { NotificationService } from 'src/app/Services/notification.service';
 import { DistributorsService } from 'src/app/Services/API/distributors.service';
 import { SendFormService } from 'src/app/Services/send-form.service';
 import { MatDialogRef } from '@angular/material';
+import { Distribute } from 'src/app/Services/distributorsInterface';
 
 @Component({
 	selector: 'app-update-distributors',
@@ -11,10 +12,10 @@ import { MatDialogRef } from '@angular/material';
 	styleUrls: [ './update-distributors.component.css' ]
 })
 export class UpdateDistributorsComponent implements OnInit {
-	dis = { distributorID: '' }; //TO GET RID OF ERROR OF 'cannot find manufacturerID of undefined'
-	//manu: Test[];
+	//dis = [ { distributorID: '', distName: '', zip: '', city: '', street: '', state: '', userID: '' } ];
 	userID: any;
 	curDisID;
+	currentState;
 	myForm: FormGroup;
 	checkForm: FormGroup;
 	serviceData: string;
@@ -83,7 +84,8 @@ export class UpdateDistributorsComponent implements OnInit {
 		this.curDisID = this._apiService.returnData();
 
 		this._apiService.getDistributorByID(this.curDisID).subscribe((data) => {
-			this.dis = data;
+			//this.dis = data;
+			this.currentState = data.state;
 		});
 
 		this.myForm = this.fb.group({
@@ -180,14 +182,14 @@ export class UpdateDistributorsComponent implements OnInit {
 		this.checkForm.setValue(this._apiService.getForm());
 	}
 	createManu(data: any) {
-		this.dis = data;
+		//this.dis = data;
 		//console.log(this.manu);
 	}
 
 	getMyPost(id: string) {
 		console.log(id);
 		this._apiService.getDistributorByID(id).subscribe((data) => {
-			this.dis = data;
+			//this.dis = data;
 			//console.log('In Post', this.manu);
 		});
 	}

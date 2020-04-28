@@ -4,19 +4,29 @@ import { NotificationService } from 'src/app/Services/notification.service';
 import { MatDialogRef } from '@angular/material';
 import { RetailersService } from 'src/app/Services/API/retailers.service';
 import { SendFormService } from 'src/app/Services/send-form.service';
-
+//import { Retail } from 'src/app/Services/retailers';
+export interface Retail {
+	retailID: string;
+	retailName: string;
+	street: string;
+	city: string;
+	state: string;
+	zip: string;
+	userID?: string;
+}
 @Component({
 	selector: 'app-updateretailers',
 	templateUrl: './updateretailers.component.html',
 	styleUrls: [ './updateretailers.component.css' ]
 })
 export class UpdateretailersComponent implements OnInit {
-	retailers = { retailID: '' }; //TO GET RID OF ERROR OF 'cannot find manufacturerID of undefined'
+	//retailers = [ { retailID: '', retailName: '', street: '', city: '', state: '', zip: '' } ]; //TO GET RID OF ERROR OF 'cannot find manufacturerID of undefined'
 	userID: any;
 	curRetailID;
 	myForm: FormGroup;
 	checkForm: FormGroup;
 	serviceData: string;
+	currentState;
 	constructor(
 		private _formService: SendFormService,
 		private fb: FormBuilder,
@@ -80,7 +90,7 @@ export class UpdateretailersComponent implements OnInit {
 		this.curRetailID = this._apiService.returnData();
 
 		this._apiService.getRetailListByID(this.curRetailID).subscribe((data) => {
-			this.retailers = data;
+			this.currentState = data.state;
 		});
 
 		this.myForm = this.fb.group({
@@ -177,14 +187,14 @@ export class UpdateretailersComponent implements OnInit {
 		this.checkForm.setValue(this._apiService.getForm());
 	}
 	createManu(data: any) {
-		this.retailers = data;
+		//this.retailers = data;
 		//console.log(this.manu);
 	}
 
 	getMyPost(id: string) {
 		console.log(id);
 		this._apiService.getRetailListByID(id).subscribe((data) => {
-			this.retailers = data;
+			//this.retailers = data;
 			//console.log('In Post', this.manu);
 		});
 	}

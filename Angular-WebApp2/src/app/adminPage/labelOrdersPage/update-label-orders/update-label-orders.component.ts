@@ -7,6 +7,7 @@ import { ManufacturerService } from 'src/app/Services/API/manufacturer.service';
 import { MatDialogRef } from '@angular/material';
 import { NotificationService } from 'src/app/Services/notification.service';
 import { LabelordersService } from 'src/app/Services/API/labelorders.service';
+import { LabelOrder } from 'src/app/Services/labelorderinterface';
 
 @Component({
 	selector: 'app-update-label-orders',
@@ -14,8 +15,8 @@ import { LabelordersService } from 'src/app/Services/API/labelorders.service';
 	styleUrls: [ './update-label-orders.component.css' ]
 })
 export class UpdateLabelOrdersComponent implements OnInit {
-	order = { orderNum: '' }; //TO GET RID OF ERROR OF 'cannot find manufacturerID of undefined'
-	//manu: Test[];
+	//order = [ { orderNum: '', partName: '', QR_begin: '', QR_end: '', label_quantity: '' } ];
+
 	userID: any;
 	curOrderNum;
 	myForm: FormGroup;
@@ -33,7 +34,7 @@ export class UpdateLabelOrdersComponent implements OnInit {
 		this.curOrderNum = this._apiService.returnData();
 
 		this._apiService.getLabelOrderListListByID(this.curOrderNum).subscribe((data) => {
-			this.order = data;
+			//this.order = data;
 			// console.log(this.order);
 		});
 
@@ -107,14 +108,14 @@ export class UpdateLabelOrdersComponent implements OnInit {
 		this.checkForm.setValue(this._apiService.getForm());
 	}
 	createManu(data: any) {
-		this.order = data;
+		//this.order = data;
 		//console.log(this.manu);
 	}
 
 	getMyPost(id: string) {
 		console.log(id);
 		this._apiService.getLabelOrderListListByID(id).subscribe((data) => {
-			this.order = data;
+			//this.order = data;
 			//console.log('In Post', this.manu);
 		});
 	}
