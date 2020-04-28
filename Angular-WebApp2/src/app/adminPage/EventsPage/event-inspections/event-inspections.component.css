@@ -1,12 +1,14 @@
 table {
 	/* width: 100%; */
-	overflow: scroll;
-
+	overflow-x: scroll;
 	height: 400px;
-	width: 100%;
+	width: fit-content;
 }
 .hide {
 	display: none;
+}
+#button {
+	width: 200%;
 }
 table th {
 	padding-right: 3vw;
