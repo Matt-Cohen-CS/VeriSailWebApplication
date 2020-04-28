@@ -96,8 +96,8 @@ export class CreateDistributorsComponent implements OnInit {
   Posts the manufacturer data to the database
   */
 	submitData() {
-		// this.myForm.get('userID').setValue(this._apiUserService.getUsername());
-		// console.log(this.myForm.get('userID').value);
+		this.myForm.get('userID').setValue(this._apiUserService.getUsername());
+		console.log(this.myForm.get('userID').value);
 		this._apiService
 			.addDistributor(this.myForm.value)
 			.subscribe((response) => console.log('Success!', response), (error) => console.error('Error', error));

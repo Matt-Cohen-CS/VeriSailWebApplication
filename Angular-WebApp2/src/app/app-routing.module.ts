@@ -17,7 +17,7 @@ const routes: Routes = [
 	// { path: 'form', component: Form1Component },
 	{ path: 'signin', component: SignInComponent },
 	// { path: 'admin', component: DashboardComponent }, //deprecated
-	// { path: 'create', component: CreateAccountComponent },
+	{ path: 'create', component: CreateAccountComponent },
 	{ path: 'manu', component: ManufacturerComponent }, //Change
 	{ path: 'manu/:id', component: ManufacturerComponent },
 	// { path: 'dashboard', component: DashboardComponent }, //deprecated

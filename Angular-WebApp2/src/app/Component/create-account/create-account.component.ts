@@ -7,6 +7,8 @@ import { BoatOwnersService } from 'src/app/Services/API/boat-owners.service';
 import { RetailersService } from 'src/app/Services/API/retailers.service';
 import { UsersService } from 'src/app/Services/API/users.service';
 import * as _ from 'lodash';
+import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/Services/notification.service';
 
 @Component({
 	selector: 'app-create-account',
@@ -21,7 +23,7 @@ export class CreateAccountComponent implements OnInit {
 	dis: any[];
 	boatOwners: any[];
 	retailers: any[];
-
+	id;
 	type: String;
 	constructor(
 		private fb: FormBuilder,
@@ -29,7 +31,9 @@ export class CreateAccountComponent implements OnInit {
 		private _apiDisService: DistributorsService,
 		private _apiOwnersService: BoatOwnersService,
 		private _apiRetailService: RetailersService,
-		private _apiUserService: UsersService
+		private _apiUserService: UsersService,
+		private router:Router,
+		private notificationservice: NotificationService
 	) {
 		this._apiService.getManufacturerList().subscribe((data) => {
 			this.manu = data;
@@ -60,19 +64,40 @@ export class CreateAccountComponent implements OnInit {
 			userID: [ null ],
 			username: [ '', [] ],
 			password: [ '', [] ],
-			typeID: [ '', [] ]
+			typeID: [ '', [] ],
+			crossrefID: [ Number,[]]
 			// city: [ '', [ Validators.required ] ],
 			// state: [ '', [ Validators.required ] ]
 		});
-		this.myForm.valueChanges.subscribe(console.log);
+		//this.myForm.valueChanges.subscribe(console.log);
 		//this.getName();
 	}
 	onSubmit() {
+		let curid;
 		if (this.myForm.get('typeID').value === 'Manufacturer') {
 			this.myForm1.get('typeID').setValue('2');
+			this._apiService.getManufacturerByName(this.myForm.get('theType').value).subscribe((data)=>{
+				this.myForm1.get('crossrefID').setValue(data.manufacturerID);
+				this.myForm1.get('username').setValue(this.myForm.get('email').value);
+				this.myForm1.get('password').setValue(this.myForm.get('password').value);
+				this._apiUserService
+				.addUser(this.myForm1.value)
+				.subscribe((response) => console.log('Success!', response), (error) => console.error('Error', error));
+
+			})
+			this.notificationservice.success(':: Account Created! Welcome to Verisail!')
+			this.router.navigate([ '/manu', this.myForm1.get('username').value ]);
 		}
 		else if (this.myForm.get('typeID').value === 'Distributor') {
 			this.myForm1.get('typeID').setValue('3');
+			// this._apiService.getManufacturerByName(this.myForm.get('theType').value).subscribe((data)=>{
+			// 	this.myForm1.get('crossrefID').setValue(data.manufacturerID);
+			// 	this.myForm1.get('username').setValue(this.myForm.get('email').value);
+			// 	this.myForm1.get('password').setValue(this.myForm.get('password').value);
+			// 	this._apiUserService
+			// 	.addUser(this.myForm1.value)
+			// 	.subscribe((response) => console.log('Success!', response), (error) => console.error('Error', error));
+			// })
 		}
 		else if (this.myForm.get('typeID').value === 'Boat Owners') {
 			this.myForm1.get('typeID').setValue('5');
@@ -83,13 +108,6 @@ export class CreateAccountComponent implements OnInit {
 		else if (this.myForm.get('typeID').value === 'Retailer') {
 			this.myForm1.get('typeID').setValue('4');
 		}
-		this.myForm1.get('username').setValue(this.myForm.get('email').value);
-		this.myForm1.get('password').setValue(this.myForm.get('password').value);
-		// this.myForm1.valueChanges.subscribe(console.log);
-
-		this._apiUserService
-			.addUser(this.myForm1.value)
-			.subscribe((response) => console.log('Success!', response), (error) => console.error('Error', error));
 	}
 	get email() {
 		return this.myForm.get('email');
