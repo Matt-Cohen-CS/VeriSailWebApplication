@@ -5,6 +5,7 @@ import { SendFormService } from 'src/app/Services/send-form.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { NotificationService } from 'src/app/Services/notification.service';
 import { DistributorsService } from 'src/app/Services/API/distributors.service';
+import { UsersService } from 'src/app/Services/API/users.service';
 
 @Component({
 	selector: 'app-create-distributors',
@@ -19,7 +20,8 @@ export class CreateDistributorsComponent implements OnInit {
 		private fb: FormBuilder,
 		private _sendForm: SendFormService,
 		public dialogRef: MatDialogRef<CreateDistributorsComponent>, //@Inject(MAT_DIALOG_DATA) public data: ManufacturerComponent
-		public notificiationService: NotificationService
+		public notificiationService: NotificationService,
+		public _apiUserService: UsersService
 	) {}
 	stateArray: string[] = [
 		'AL : Alabama',
@@ -86,7 +88,7 @@ export class CreateDistributorsComponent implements OnInit {
 			city: [ { value: '', disabled: false }, [ Validators.required ] ],
 			state: [ '', [ Validators.required ] ],
 			zip: [ '', [ Validators.required, Validators.minLength(5) ] ],
-			userID: [ null, [] ]
+			userID: [ '', [] ]
 		});
 	}
 
@@ -94,6 +96,8 @@ export class CreateDistributorsComponent implements OnInit {
   Posts the manufacturer data to the database
   */
 	submitData() {
+		// this.myForm.get('userID').setValue(this._apiUserService.getUsername());
+		// console.log(this.myForm.get('userID').value);
 		this._apiService
 			.addDistributor(this.myForm.value)
 			.subscribe((response) => console.log('Success!', response), (error) => console.error('Error', error));

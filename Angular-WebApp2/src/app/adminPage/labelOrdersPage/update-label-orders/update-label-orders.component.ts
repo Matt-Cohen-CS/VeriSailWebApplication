@@ -34,7 +34,7 @@ export class UpdateLabelOrdersComponent implements OnInit {
 
 		this._apiService.getLabelOrderListListByID(this.curOrderNum).subscribe((data) => {
 			this.order = data;
-			console.log(this.order);
+			// console.log(this.order);
 		});
 
 		this.myForm = this.fb.group({

@@ -15,13 +15,15 @@ import { RetailersComponent } from './adminPage/RetailersPage/retailers/retailer
 const routes: Routes = [
 	{ path: 'home', component: HomeComponent },
 	{ path: 'about', component: AboutComponent },
-	{ path: 'form', component: Form1Component },
+	// { path: 'form', component: Form1Component },
 	{ path: 'signin', component: SignInComponent },
-	{ path: 'admin', component: DashboardComponent }, //Change
-	{ path: 'create', component: CreateAccountComponent },
+	// { path: 'admin', component: DashboardComponent }, //deprecated
+	// { path: 'create', component: CreateAccountComponent },
 	{ path: 'manu', component: ManufacturerComponent }, //Change
-	{ path: 'dashboard', component: DashboardComponent }, //Change
-	{ path: 'createManu/:id', component: CreateManuComponent }, //Change
+	{ path: 'manu/:id', component: ManufacturerComponent },
+	// { path: 'dashboard', component: DashboardComponent }, //deprecated
+	// { path: 'dashboard/:id', component: DashboardComponent }, //deprecated
+	// { path: 'createManu/:id', component: CreateManuComponent }, // deprecated
 	{ path: 'labelorders', component: LabelOrdersComponent }, //Change
 	{ path: 'dist', component: DistributorsComponent },
 	{ path: 'boatowners', component: BoatOwnersComponent },

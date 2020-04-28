@@ -52,45 +52,35 @@
                         <mat-label>First Name</mat-label>
                         <input matInput placeholder="" formControlName="firstName">
 
-                        <!-- <mat-error *ngIf="manufacturerID.touched">
+                        <mat-error *ngIf="firstName.touched">
                             Required field
-                        </mat-error> -->
+                        </mat-error> 
                     </mat-form-field> 
                     <mat-form-field class="halfwidth" appearance="outline">
                         <mat-label>Last Name</mat-label>
                         <input matInput placeholder="" formControlName="lastName">
                     
-                        <!-- <mat-error *ngIf="manufacturerID.touched">
+                         <mat-error *ngIf="lastName.touched">
                                                 Required field
-                                            </mat-error> -->
+                                            </mat-error> 
                     </mat-form-field>
                     <mat-form-field class="fullwidth" appearance="outline">
                         <mat-label>Email Address</mat-label>
                         <input matInput placeholder="example@example.com" formControlName="email">
                     
-                        <!-- <mat-error *ngIf="manufacturerID.touched">
-                            Required field
-                          </mat-error> -->
+                        <mat-error *ngIf="email.touched">
+                            Must be a valid email address
+                          </mat-error> 
                     </mat-form-field>
-                    <mat-form-field class="fullwidth" appearance="outline">
+                    <mat-form-field class="fullwidth" appearance="outline" >
                         <mat-label>Password</mat-label>
-                        <input matInput placeholder="" formControlName="password">
+                        <input type="password" matInput placeholder="" formControlName="password">
                     
-                        <!-- <mat-error *ngIf="manufacturerID.touched">
+                       <mat-error *ngIf="password.touched">
                         Required field                         
-                     </mat-error> -->
+                     </mat-error> 
                     </mat-form-field>
-                    <!-- <mat-form-field class="halfwidth" appearance="outline">
-                        <mat-label>Type of User</mat-label>
-                        <mat-select formControlName="type">
-                            <mat-option>-- None --</mat-option>
-                            <mat-optgroup *ngFor = "let type of typeGroup" [label]="type.name">
-                                <mat-option *ngFor = "let name of type.list" [value]="name.value" >
-                                    {{name.viewValue}}
-                                </mat-option>
-                            </mat-optgroup>
-                        </mat-select>
-                    </mat-form-field> -->
+                
                     <mat-form-field class="halfwidth" appearance="outline">
                         <mat-label>Type of User</mat-label>
                         <mat-select formControlName ="typeID">
@@ -101,7 +91,9 @@
                             <mat-option value="ILCA">ILCA</mat-option>
                             <mat-option value="Retailer">Retailers</mat-option>
                         </mat-select>
-                        
+                        <mat-error *ngIf="typeID.touched">
+                            Required field
+                        </mat-error>
                     </mat-form-field>
                     <mat-form-field class="halfwidth" appearance="outline" *ngIf="myForm.value.typeID == 'Manufacturer' ">
                         <mat-label>Manufacturer Names</mat-label>

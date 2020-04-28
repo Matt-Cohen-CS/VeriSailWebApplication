@@ -6,20 +6,7 @@ import { DistributorsService } from 'src/app/Services/API/distributors.service';
 import { BoatOwnersService } from 'src/app/Services/API/boat-owners.service';
 import { RetailersService } from 'src/app/Services/API/retailers.service';
 import { UsersService } from 'src/app/Services/API/users.service';
-<<<<<<< HEAD
 import * as _ from 'lodash';
-=======
-
-interface Type {
-	value: String;
-	viewValue: String;
-}
-
-interface TypeGroup {
-	name: String;
-	list: Type[];
-}
->>>>>>> de1b18fd489953ed8f4ad4c05359f3275391bfa4
 
 @Component({
 	selector: 'app-create-account',
@@ -63,61 +50,63 @@ export class CreateAccountComponent implements OnInit {
 			firstName: [ '', [ Validators.required ] ],
 			lastName: [ '', [ Validators.required ] ],
 			email: [ '', [ Validators.required, Validators.email ] ],
-			userName: [ '', [ Validators.required ] ],
-			password: [ '', [ Validators.required ] ],
-			type: [ '', [ Validators.required ] ],
-			theType: [ '' ]
-			// city: [ '', [ Validators.required ] ],
-			// state: [ '', [ Validators.required ] ]
-		});
-		this.myForm1 = this.fb.group({
-			firstName: [ '', [ Validators.required ] ],
-			lastName: [ '', [ Validators.required ] ],
-			email: [ '', [ Validators.required, Validators.email ] ],
-			userName: [ '', [ Validators.required ] ],
 			password: [ '', [ Validators.required ] ],
 			typeID: [ '', [ Validators.required ] ],
 			theType: [ '' ]
 			// city: [ '', [ Validators.required ] ],
 			// state: [ '', [ Validators.required ] ]
 		});
+		this.myForm1 = this.fb.group({
+			userID: [ null ],
+			username: [ '', [] ],
+			password: [ '', [] ],
+			typeID: [ '', [] ]
+			// city: [ '', [ Validators.required ] ],
+			// state: [ '', [ Validators.required ] ]
+		});
 		this.myForm.valueChanges.subscribe(console.log);
 		//this.getName();
 	}
-<<<<<<< HEAD
 	onSubmit() {
-		if (this.myForm.get('type').value === 'Manufacturer') {
-			this.myForm.get('type').setValue('2');
+		if (this.myForm.get('typeID').value === 'Manufacturer') {
+			this.myForm1.get('typeID').setValue('2');
 		}
-		else if (this.myForm.get('type').value === 'Distributor') {
-			this.myForm.get('type').setValue('3');
+		else if (this.myForm.get('typeID').value === 'Distributor') {
+			this.myForm1.get('typeID').setValue('3');
 		}
-		else if (this.myForm.get('type').value === 'Boat Owner') {
-			this.myForm.get('type').setValue('5');
+		else if (this.myForm.get('typeID').value === 'Boat Owners') {
+			this.myForm1.get('typeID').setValue('5');
 		}
-		else if (this.myForm.get('type').value === 'ILCA') {
-			this.myForm.get('type').setValue('1');
+		else if (this.myForm.get('typeID').value === 'ILCA') {
+			this.myForm1.get('typeID').setValue('1');
 		}
-		else if (this.myForm.get('type').value === 'Retailer') {
-			this.myForm.get('type').setValue('4');
+		else if (this.myForm.get('typeID').value === 'Retailer') {
+			this.myForm1.get('typeID').setValue('4');
 		}
-		console.log(this.myForm.value);
-		console.log(_.omit(this.myForm, 'firstName', 'lastName', 'email', 'theType'));
-		// this._apiUserService
-		// 	.addUser(_.omit(this.myForm.value,''))
-		// 	.subscribe((response) => console.log('Success!', response), (error) => console.error('Error', error));
-=======
+		this.myForm1.get('username').setValue(this.myForm.get('email').value);
+		this.myForm1.get('password').setValue(this.myForm.get('password').value);
+		// this.myForm1.valueChanges.subscribe(console.log);
 
-	onSubmit(){
-		this._apiService.getManufacturerList().subscribe((data) => {
-			this.manu = data;
-		});
->>>>>>> de1b18fd489953ed8f4ad4c05359f3275391bfa4
+		this._apiUserService
+			.addUser(this.myForm1.value)
+			.subscribe((response) => console.log('Success!', response), (error) => console.error('Error', error));
+	}
+	get email() {
+		return this.myForm.get('email');
+	}
+	get password() {
+		return this.myForm.get('password');
+	}
+	get firstName() {
+		return this.myForm.get('firstName');
+	}
+	get lastName() {
+		return this.myForm.get('lastName');
+	}
+	get typeID() {
+		return this.myForm.get('typeID');
+	}
+	get theType() {
+		return this.myForm.get('theType');
 	}
 }
-// ILCA 1
-// Manu 2...
-// Dis 3
-// Retailer 4
-// Boat owner 5
-// Other: 6
