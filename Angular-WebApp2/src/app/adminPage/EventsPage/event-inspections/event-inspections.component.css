@@ -7,8 +7,11 @@ table {
 .hide {
 	display: none;
 }
-#button {
-	width: 200%;
+/*
+	MAIN table 
+*/
+.form-container{
+	overflow: scroll;
 }
 table th {
 	padding-right: 3vw;
@@ -25,8 +28,7 @@ snack-bar-container.success {
 	color: white;
 }
 #refresh {
-	float: right;
-	justify-content: center;
+	float: left;
 	margin-top: 1.3vw;
 	margin-right: 1vw;
 }
