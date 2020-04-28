@@ -17,8 +17,13 @@ const routes: Routes = [
 	// { path: 'form', component: Form1Component },
 	{ path: 'signin', component: SignInComponent },
 	// { path: 'admin', component: DashboardComponent }, //deprecated
+<<<<<<< HEAD
 	{ path: 'create', component: CreateAccountComponent }, //deprecated
 	{ path: 'manu', component: ManufacturerComponent },
+=======
+	{ path: 'create', component: CreateAccountComponent },
+	{ path: 'manu', component: ManufacturerComponent }, //Change
+>>>>>>> 3745895e051b03d4db5f61dc0dff1aa3672b14b0
 	{ path: 'manu/:id', component: ManufacturerComponent },
 	// { path: 'dashboard', component: DashboardComponent }, //deprecated
 	// { path: 'dashboard/:id', component: DashboardComponent }, //deprecated
