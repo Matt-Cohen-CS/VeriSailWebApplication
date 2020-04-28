@@ -1,0 +1,81 @@
+<mat-toolbar>
+    <span style='display: table-cell;'>
+        <h1>Update Boat Owner</h1>
+    </span>
+    <span class="fill-remaining-space" style='display: table-cell; width:100%;'></span>
+    <button class="btn-dialog-close" style='display: table-cell;' mat-stroked-button (click)="onClose()" tabIndex="-1">
+        <mat-icon>clear</mat-icon>
+    </button>
+</mat-toolbar>
+<hr>
+<p>
+    <strong> <span> All changes will update Boat Owner: {{boatowners.ownerID}}</span></strong>
+</p>
+<form [formGroup]="myForm">
+    <table class="table table-hover" id="updateTable">
+        <thead>
+            <tr>
+                <th scope="col">Attributes</th>
+                <th scope="col">Before Change</th>
+                <th scope="col">After Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" class="align-middle">First Name</th>
+                <td class="align-middle">{{boatowners.fName}}</td>
+                <td class="align-middle">
+
+                    <mat-form-field>
+                        <input matInput placeholder="First Name" formControlName="fName">
+                        <!-- <mat-error *ngIf="manuName.touched">
+                                    Required field
+                                </mat-error> -->
+                    </mat-form-field>
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row" class="align-middle">Last Name</th>
+                <td class="align-middle">{{boatowners.lName}}</td>
+                <td class="align-middle">
+                    <mat-form-field>
+                        <input matInput placeholder="Last Name" formControlName="lName">
+                        <!-- <mat-error *ngIf="street.touched">
+                                    Required field
+                                </mat-error> -->
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" class="align-middle">Phone Number</th>
+                <td class="align-middle">{{boatowners.phone}}</td>
+                <td class="align-middle">
+                    <mat-form-field>
+                        <input matInput placeholder="Phone Number" formControlName="phone">
+                         <mat-error *ngIf="phone.invalid">
+                                    Must be a 10 digit number. Ex. 7321223111
+                                </mat-error> 
+                    </mat-form-field>
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row" class="align-middle">Email</th>
+                <td class="align-middle">{{boatowners.email}}</td>
+                <td class="align-middle">
+                    <mat-form-field>
+                        <input matInput placeholder="Email" formControlName="email">
+                        <mat-error *ngIf="email.invalid">
+                           Must be a proper email address. Ex. 123@example.com
+                         </mat-error> 
+                    </mat-form-field>
+                </td>
+            
+            </tr>
+        </tbody>
+    </table>
+    <!-- Value: {{myForm.value | json}} -->
+</form>
+<button mat-raised-button type="submit" [disabled]="myForm.invalid" class="btn btn-secondary"
+    (click)="checkCondition()">Update Table</button>

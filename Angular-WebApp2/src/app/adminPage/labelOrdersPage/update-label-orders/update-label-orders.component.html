@@ -1,0 +1,82 @@
+<mat-toolbar>
+    <span style='display: table-cell;'>
+        <h1>Update Label Orders</h1>
+    </span>
+    <span class="fill-remaining-space" style='display: table-cell; width:100%;'></span>
+    <button class="btn-dialog-close" style='display: table-cell;' mat-stroked-button (click)="onClose()" tabIndex="-1">
+        <mat-icon>clear</mat-icon>
+    </button>
+</mat-toolbar>
+<hr>
+<p>
+    <strong> <span> All changes will update Label Order: {{order.orderNum}}</span></strong>
+</p>
+<form [formGroup]="myForm">
+    <table class="table table-hover" id="updateTable">
+        <thead>
+            <tr>
+                <th scope="col">Attributes</th>
+                <th scope="col">Before Change</th>
+                <th scope="col">After Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" class="align-middle">Part Name</th>
+                <td class="align-middle">{{order.partName}}</td>
+                <td class="align-middle">
+
+                    <mat-form-field>
+                        <input matInput placeholder="Part Name" formControlName="partName">
+                        <!-- <mat-error *ngIf="manuName.touched">
+                                    Required field
+                                </mat-error> -->
+                    </mat-form-field>
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row" class="align-middle">QR_begin</th>
+                <td class="align-middle">{{order.QR_begin}}</td>
+                <td class="align-middle">
+                    <mat-form-field>
+                        <input matInput type="number" placeholder="QR_begin" formControlName="QR_begin">
+                        <!-- <mat-error *ngIf="street.touched">
+                                    Required field
+                                </mat-error> -->
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" class="align-middle">QR_end</th>
+                <td class="align-middle">{{order.QR_end}}</td>
+                <td class="align-middle">
+                    <mat-form-field>
+                        <input matInput type="number" placeholder="QR_end" formControlName="QR_end">
+                        <!-- <mat-error *ngIf="city.touched">
+                                    Required field
+                                </mat-error> -->
+                    </mat-form-field>
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row" class="align-middle">label_quantity</th>
+                <td class="align-middle">{{order.label_quantity}}</td>
+                <td class="align-middle">
+                    <mat-form-field>
+                        <input matInput placeholder="label_quantity" formControlName="label_quantity">
+                        <!-- <mat-error *ngIf="zip.touched">
+                                    Required field. Please use your five digit Zip-Code
+                                </mat-error> -->
+                        <!-- <mat-hint align="end">Only five digit Zip-Codes allowed</mat-hint> -->
+                    </mat-form-field>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <!-- Value: {{myForm.value | json}} -->
+</form>
+<button mat-raised-button type="submit" [disabled]="myForm.invalid" class="btn btn-secondary"
+    (click)="checkCondition()">Update Table</button>

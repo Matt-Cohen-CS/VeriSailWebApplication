@@ -1,8 +1,14 @@
 #image {
-    mix-blend-mode: darken;
-    height: 4.4rem;
+	mix-blend-mode: darken;
+	height: 4.4rem;
 }
-#image2{
-    mix-blend-mode: darken;
-    height: 2.5rem;
+#image2 {
+	mix-blend-mode: darken;
+	height: 2.5rem;
+}
+body {
+	height: 100%;
+}
+div {
+	height: 650px;
 }

@@ -1,33 +1,97 @@
 .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
 body {
-  margin: auto;
-  width: 100%;
+	margin: auto;
+	width: 100%;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+	color: black;
+}
+input.mat-input-element {
+	color: black;
 }
 
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-    }
-  }
-.allsign{
-    width: 75%;
-    margin: auto;
-   
+@media (min-width: 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
 }
-button{
-    width: 75%;
-    margin: auto;
+.allsign {
+	width: 75%;
+	margin: auto;
+}
+button {
+	width: 75%;
+	margin: auto;
 }
 img {
-  mix-blend-mode: darken;
+	mix-blend-mode: darken;
 }
 p {
-  padding-top: 1vw;
+	padding-top: 1vw;
+}
+.fullwidth {
+	width: 90%;
+	text-align: left;
+}
+::ng-deep .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+	background-color: black !important;
+}
+/* 
+  Actually outline of the border
+*/
+
+/* 
+  When field is clicked
+*/
+/* 
+  Color of text inside form
+*/
+::ng-deep .mat-input-element {
+	color: black !important;
+}
+
+/* 
+  Color of label
+*/
+::ng-deep .mat-form-field-label {
+	color: rgba(0, 0, 0, 1) !important;
+}
+
+/* 
+  Color of border
+*/
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+	color: black !important;
+	opacity: .4 !important;
+}
+/* 
+  Color when form is focused
+*/
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+	color: green !important;
+}
+/* 
+  Color of label when theres an error
+*/
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+	color: red !important;
+}
+
+/* 
+  Color of border when theres an error
+*/
+::ng-deep
+	.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
+	.mat-form-field-outline-thick {
+	color: red !important;
+	opacity: 0.8 !important;
 }

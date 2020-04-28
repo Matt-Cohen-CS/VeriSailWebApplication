@@ -1,116 +1,93 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiServiceService } from 'src/app/Services/api-service.service';
 import { Test } from 'src/app/Services/sample';
-import {FormBuilder,FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SendFormService } from 'src/app/Services/send-form.service';
+import {
+	MatTableDataSource,
+	MatSort,
+	MatPaginator,
+	MatDialog,
+	MatDialogRef,
+	MAT_DIALOG_DATA,
+	MatDialogConfig
+} from '@angular/material';
+import { ManufacturerService } from 'src/app/Services/API/manufacturer.service';
+import { registerEscClick } from 'ngx-bootstrap/utils/triggers';
+import { CreateManuComponent } from '../create-manu/create-manu.component';
+import { CreateManufacturerComponent } from '../create-manufacturer/create-manufacturer.component';
+import { UpdateManufacturerComponent } from '../update-manufacturer/update-manufacturer.component';
+
 @Component({
-  selector: 'app-manufacturer',
-  templateUrl: './manufacturer.component.html',
-  styleUrls: ['./manufacturer.component.css']
+	selector: 'app-manufacturer',
+	templateUrl: './manufacturer.component.html',
+	styleUrls: [ './manufacturer.component.css' ]
 })
 export class ManufacturerComponent implements OnInit {
-  manu: Test[];
-  myForm: FormGroup;
-  idNumber: string;
-  constructor(private _apiService: ApiServiceService, private fb:FormBuilder, private _sendForm: SendFormService) { }
-  stateArray: string[] = [
-    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
-    'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
-    'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-    'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico',
-    'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
-    'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-    'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-  ];
-  ngOnInit() {
-    this.myForm = this.fb.group({
-      manufacturerID:[null,[
-        //Validators.required
-    ]],
-      manuName: ['',[
-        Validators.required
-      ]],
-      zip:['',[
-        Validators.required,
-        Validators.minLength(5)
-      ]],
-      street:['',[
-        Validators.required
-      ]],
-      city:['',[
-        Validators.required
-      ]],
-      state:['',[
-        Validators.required
-      ]]
-    });
-    this.myForm.valueChanges.subscribe(console.log);
-    this._apiService.getPost().subscribe(
-      data =>
-      {
-         this.manu = data;
-         
-      }
-      );
-  }
-  
-   /*
-  Gets the manufacturer data from the database
-   */
-  getMyPost(){
-    // this._apiService.getPost().subscribe(data => this.posts = data);
-    // this.posts = this._apiService.getPost().subscribe(data => this.test = data);
-    this._apiService.getPost().subscribe(
-     data =>
-     {
-        this.manu = data;
-        
-     }
-     );
-   }
-   /*
-   Posts the manufacturer data to the database
-   */
-   submitData(){
-    this.manu = [
-    ]
-     this._apiService.addManu(this.myForm.value)
-     .subscribe(
-       response => console.log('Success!', response),
-       error => console.error('Error', error)
-       );
-   }
+	manu: Test[];
+	curManuID;
+	constructor(
+		private _apiService: ManufacturerService,
+		private dialog: MatDialog,
+		private _sendForm: SendFormService
+	) {}
+	listData: MatTableDataSource<any>;
+	displayedColumns: string[] = [
+		'manufacturerID',
+		'manuName',
+		'street',
+		'city',
+		'state',
+		'zip',
+		'userID',
+		'Options'
+	];
 
-   /*
+	@ViewChild(MatSort, null)
+	sort: MatSort; //Belong to the ViewChild above FORMAT IS IMPORTANT
+	@ViewChild(MatPaginator, null)
+	paginator: MatPaginator; //Belong to the ViewChild above FORMAT IS IMPORTANT
+	ngOnInit() {
+		this.postManufacturerList();
+	}
 
-   */
-   editManu(i: string){
-     this._sendForm.sendForm(i);
-   }
+	postManufacturerList() {
+		this._apiService.getManufacturerList().subscribe((data) => {
+			this.listData = new MatTableDataSource(data);
+			this.listData.sort = this.sort;
+			this.listData.paginator = this.paginator;
+		});
+	}
+	applyFilter(filterValue: String) {
+		this.listData.filter = filterValue.trim().toLowerCase();
+	}
 
-
-
-
-
-   /*
-   Getters, this is for Validators
-   */
-  get manufacturerID(){
-    return this.myForm.get('manufacturerID');
-  }
-  get manuName(){
-    return this.myForm.get('manuName');
-  }
-  get zip(){
-    return this.myForm.get('zip');
-  }
-  get street(){
-    return this.myForm.get('street');
-  }
-  get state(){
-    return this.myForm.get('state');
-  }
-  get city(){
-    return this.myForm.get('city');
-  }
+	onCreate() {
+		const dialogConfig = this.dialog.open(CreateManufacturerComponent, {
+			width: '600px',
+			height: '500px',
+			autoFocus: true
+		});
+		dialogConfig.afterClosed().subscribe((result) => {
+			console.log('Create was closed');
+			setTimeout(() => this.postManufacturerList(), 100);
+			this.postManufacturerList();
+		});
+	}
+	onEdit(row) {
+		this.curManuID = row.manufacturerID;
+		this._sendForm.sendForm(this.curManuID);
+		this._apiService.sendData(this.curManuID);
+		this._apiService.setForm(row);
+		const dialogConfig = this.dialog.open(UpdateManufacturerComponent, {
+			width: '800px',
+			height: '600px',
+			autoFocus: true
+		});
+		dialogConfig.afterClosed().subscribe((result) => {
+			console.log('Updating');
+			setTimeout(() => this.postManufacturerList(), 500);
+			this.postManufacturerList();
+		});
+	}
 }

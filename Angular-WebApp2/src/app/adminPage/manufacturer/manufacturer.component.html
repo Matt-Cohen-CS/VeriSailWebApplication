@@ -1,175 +1,93 @@
 <body>
-
     <app-admin-header></app-admin-header>
-    <app-admin-nav ></app-admin-nav>
-    <div class="container-fluid">
-        <!-- <div class="row"> -->
-            <!-- App-admin-nav will need this class for it to function correctly -->
-           
-
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-6">
-                
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Hello, {{user}}! Welcome to VeriSail</h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group mr-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                        </div>
-                    </div>
+    <app-admin-nav></app-admin-nav>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Hello, Welcome to VeriSail!</h1>
+            <!-- <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
                 </div>
-                <div class="table-responsive" >
-                    <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>street</th>
-                                <th>city</th>
-                                <th>state</th>
-                                <th>zip</th>
-                                <th>userID</th>
-                                <th>manufacturerscol</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let man of manu">
-                               
-                                <td class="align-middle">{{man.manufacturerID}}</td>
-                                <td class="align-middle">{{man.manuName}}</td>
-                                <td class="align-middle">{{man.street}}</td>
-                                <td class="align-middle">{{man.city}}</td>
-                                <td class="align-middle">{{man.state}}</td>
-                                <td class="align-middle">{{man.zip}}</td>
-                                <td class="align-middle">{{man.userID}}</td>
-                                <td class="align-middle">{{man.manufacturerscol}}</td>
-                                <td class="align-middle"><button type="button"class="btn btn-secondary" id="edit" routerLink="/createManu/{{man.manufacturerID}}">Edit</button></td>
-                                
-                            </tr>
-                        </tbody>
-                        
-                    </table>
-                </div>
-                <h2>Please make a selection</h2>
-                <!-- <form id="grid" style="width: fit-content;"> -->
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Example select</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Example select</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!-- </form>   -->
-                <!-- <form id="grid" style="width: fit-content;"> -->
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Example select</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>h</option>
-                                <option>2</option>
-                                <option>h</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Example select</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!-- </form>   -->
-                <form [formGroup]="myForm">
-                    Value: {{myForm.value | json}}
-                    <hr>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <mat-form-field>
-                                    <input matInput placeholder="manufacturer ID" formControlName="manufacturerID">
-                                
-                                    <mat-error *ngIf="manufacturerID.touched">
-                                        Required field
-                                    </mat-error>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput placeholder="Manufacturer name" formControlName="manuName">
-                                    <mat-error *ngIf="manuName.touched">
-                                        Required field
-                                    </mat-error>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput placeholder="street" formControlName="street">
-                                    <mat-error *ngIf="street.touched">
-                                        Required field
-                                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                     
-                    </div>
-                    <div class="row">
-                        
-                        <div class="col">
-                            <div class="form-group">
-                                <mat-form-field>
-                                    <input matInput placeholder="city" formControlName="city">
-                                    <mat-error *ngIf="city.touched">
-                                        Required field
-                                    </mat-error>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <mat-label>State</mat-label>
-                                    <mat-select formControlName="state">
-                                      <mat-option>None</mat-option>
-                                      <mat-option *ngFor="let state of stateArray" [value]="state">{{state}}</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="state.touched">
-                                        Required field
-                                    </mat-error>
-                                  </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput placeholder="Zip Code" formControlName="zip">
-                                    <mat-error *ngIf="zip.touched">
-                                        Required field. Please use your five digit Zip-Code
-                                    </mat-error>
-                                    <mat-hint align="end">Only five digit Zip-Codes allowed</mat-hint>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                    </div>
-                    <button mat-raised-button type="submit"[disabled]="myForm.invalid" color="primary" (click)="submitData()">Submit</button>
-                    <hr>       
-                </form>
-            </main>
-        <!-- </div> -->
-    </div>
+            </div> -->
+        </div>
+        <div class="form-container mat-elevation-z8">
+            
+            <div id="button" style="padding-left: 1vw;"> 
+            <button class="btn btn-light" mat-raised-button (click)="onCreate()">
+                <mat-icon >add</mat-icon>Create
+            </button>
+            <mat-form-field matInput placeholder="Filter" appearance="outline" id="filter" style="padding-left:2vw;">
+                <mat-label>Search Manufacturer</mat-label>
+                <mat-icon matPrefix >search</mat-icon>
+                <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search" >
+                <!-- <mat-hint>Example: 10001, NJ, West Ave</mat-hint> -->
+            </mat-form-field>
+            <div id="refresh" >
+            <button class="btn btn-light"  mat-button color='gray' (click)="postManufacturerList()">
+                <mat-icon>refresh</mat-icon>
+            </button>
+            </div>
+            </div>
+            <table mat-table [dataSource]="listData" matSort>
+                <ng-container matColumnDef="manufacturerID">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>manufacturer ID</th>
+                    <td mat-cell *matCellDef="let element">{{element.manufacturerID}}</td>
+                </ng-container>
+                <ng-container matColumnDef="manuName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>manuName</th>
+                    <td mat-cell *matCellDef="let element">{{element.manuName}}</td>
+                </ng-container>
+                <ng-container matColumnDef="street">
+                    <th mat-header-cell *matHeaderCellDef>street</th>
+                    <td mat-cell *matCellDef="let element">{{element.street}}</td>
+                </ng-container>
+                <ng-container matColumnDef="city">
+                    <th mat-header-cell *matHeaderCellDef>city</th>
+                    <td mat-cell *matCellDef="let element">{{element.city}}</td>
+                </ng-container>
+                <ng-container matColumnDef="state">
+                    <th mat-header-cell *matHeaderCellDef>state</th>
+                    <td mat-cell *matCellDef="let element">{{element.state}}</td>
+                </ng-container>
+                <ng-container matColumnDef="zip">
+                    <th mat-header-cell *matHeaderCellDef>zip</th>
+                    <td mat-cell *matCellDef="let element">{{element.zip}}</td>
+                </ng-container>
+                <ng-container matColumnDef="userID">
+                    <th mat-header-cell *matHeaderCellDef>userID</th>
+                    <td mat-cell *matCellDef="let element">{{element.userID}}</td>
+                </ng-container>
+                <ng-container matColumnDef="Options">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let row">
+                        <button mat-icon-button (click)="onEdit(row)">
+                            <mat-icon style="float: left;">create</mat-icon>
+                            <span><p>&nbsp;&nbsp; Edit</p></span>
+                        </button>
+                        <!-- <button mat-icon-button color="warn" (click)="onDelete(row.manufacturerID)">
+                            <mat-icon>delete_outline</mat-icon>
+                        </button> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="loading">
+                    <mat-footer-cell *matFooterCellDef colspan="6">
+                        Loading data...
+                    </mat-footer-cell>
+                </ng-container>   
+                <ng-container matColumnDef="No data">
+                    <mat-footer-cell *matFooterCellDef colspan="6">
+                        No data
+                    </mat-footer-cell>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                <tr mat-row *matRowDef="let row; columns:displayedColumns;"></tr>
+                <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></tr>
+                <tr mat-footer-row *matFooterRowDef="['No data']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></tr> 
+            </table>
+            <mat-paginator [pageSizeOptions]="[5,10]" showFirstLastButtons></mat-paginator>
+        </div>
+    </main>
+</body>
+<!-- manufacturerID', 'manuName', 'street', 'city', 'state', 'zip', 'userID -->

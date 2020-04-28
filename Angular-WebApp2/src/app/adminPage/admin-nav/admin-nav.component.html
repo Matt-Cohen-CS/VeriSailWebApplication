@@ -2,7 +2,6 @@
 <!------ Include the above in your HEAD tag ---------->
 
 
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div class="nav-side-menu">
     <div class="brand">VeriSail</div>
@@ -11,44 +10,57 @@
         <div class="menu-list">
   
             <ul id="menu-content" class="menu-content collapse out">
-                <li routerLink="/dashboard">
+                <!-- <li routerLink="/dashboard">
                   <a>
                   <i class="fa fa-dashboard fa-lg"></i> Dashboard
                   </a>
+                </li> -->
+                <li data-toggle="collapse" data-target="#boatOwners" class="collapsed">
+                  <a><i class="fa fa-user fa-lg"></i> Boat Owners <span class="arrow"></span></a>
                 </li>
+                <ul class="sub-menu collapse" id="boatOwners">
+                  <li routerLink="/boatowners"><a routerLink="/boatowners">General</a></li>
+                </ul>
+
+                <li data-toggle="collapse" data-target="#distributors" class="collapsed">
+                  <a><i class="fa fa-globe fa-lg"></i> Distributors <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="distributors">
+                  <li routerLink="/dist"><a routerLink="/dist">General</a></li>
+                </ul>
+
+                    <li data-toggle="collapse" data-target="#labelOrders" class="collapsed">
+                      <a><i class="fa fa-tag fa-lg"></i> Label Orders <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="labelOrders">
+                      <li routerLink="/labelorders"><a routerLink="/labelorders">General</a></li>
+                      <!-- <li>New Service 2</li>
+                                      <li>New Service 3</li> -->
+                    </ul>
 
                 <li  data-toggle="collapse" data-target="#Manufacturer" class="collapsed">
                   <a ><i class="fa fa-cube fa-lg"></i> Manufacturer <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="Manufacturer">
                     <li routerLink="/manu"><a routerLink="/manu">General</a></li>
-                    <li><a routerLink="/manu">General</a></li>
-                    <li><a href="#">Buttons</a></li>
-                    <li><a href="#">Tabs & Accordions</a></li>
+                    <!-- <li><a routerLink="/manu">General</a></li> -->
+                    <!-- <li><a href="#">Buttons</a></li>
+                    <li><a href="#">Tabs & Accordions</a></li> -->
                 </ul>
 
 
-                <li data-toggle="collapse" data-target="#service" class="collapsed">
-                  <a ><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
-                </li>  
-                <ul class="sub-menu collapse" id="service">
-                  <li>New Service 1</li>
-                  <li>New Service 2</li>
-                  <li>New Service 3</li>
-                </ul>
+            
 
 
-                <li data-toggle="collapse" data-target="#new" class="collapsed">
-                  <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+               
+
+                <li data-toggle="collapse" data-target="#retail" class="collapsed">
+                  <a><i class="fa fa-shopping-cart fa-lg"></i> Retailers <span class="arrow"></span></a>
                 </li>
-                <ul class="sub-menu collapse" id="new">
-                  <li>New New 1</li>
-                  <li>New New 2</li>
-                  <li>New New 3</li>
+                <ul class="sub-menu collapse" id="retail">
+                  <li routerLink="/retail"><a routerLink="/retail">General</a></li>
                 </ul>
-
-
-                 <li>
+                 <!-- <li>
                   <a href="#">
                   <i class="fa fa-user fa-lg"></i> Profile
                   </a>
@@ -58,7 +70,7 @@
                   <a href="#">
                   <i class="fa fa-users fa-lg"></i> Users
                   </a>
-                </li>
+                </li> -->
             </ul>
      </div>
 </div>

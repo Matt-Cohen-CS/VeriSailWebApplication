@@ -1,38 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.4;
-    background-color: rgb(235, 230, 230);
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 1.4;
+	background-color: rgb(235, 230, 230);
 }
-a{
-    color: #333;
-    text-decoration: none;
+a {
+	color: #333;
+	text-decoration: none;
 }
-
-html, body { height: fit-content; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+snack-bar-container.success {
+	background-color: green;
+	color: white;
+	margin-top: 3vw;
+}
+snack-bar-container.warn {
+	background-color: red;
+	color: white;
+	margin-top: 3vw;
+}
+html,
+body {
+	height: fit-content;
+}
+body {
+	margin: 0;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 @media (min-width: 40em) {
-    /* Bump up size of carousel content */
-    .carousel-caption p {
-      margin-bottom: 1.25rem;
-      font-size: 1.25rem;
-      line-height: 1.4;
-    }
-  
-    .featurette-heading {
-      font-size: 50px;
-    }
-    
-  }
-  
-  @media (min-width: 62em) {
-    .featurette-heading {
-      margin-top: 7rem;
-    }
-  }
+	/* Bump up size of carousel content */
+	.carousel-caption p {
+		margin-bottom: 1.25rem;
+		font-size: 1.25rem;
+		line-height: 1.4;
+	}
+
+	.featurette-heading {
+		font-size: 50px;
+	}
+}
+
+@media (min-width: 62em) {
+	.featurette-heading {
+		margin-top: 7rem;
+	}
+}

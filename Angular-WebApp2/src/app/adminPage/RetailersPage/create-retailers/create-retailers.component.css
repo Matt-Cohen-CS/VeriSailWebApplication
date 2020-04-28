@@ -1,0 +1,30 @@
+body {
+	background-color: white;
+	height: 100%;
+	width: 100%;
+}
+input {
+	color: black;
+}
+mat-form-field {
+	margin: .5vw;
+}
+#close {
+	margin: 1vw;
+}
+td {
+	padding-top: .5vw;
+	margin: auto;
+	border-style: groove;
+	border-top: groove;
+}
+@media (max-width: 1000px) {
+	main {
+		margin-right: 1vw;
+	}
+}
+@media (min-width: 1200px) {
+	main {
+		margin-right: 3.9vw;
+	}
+}

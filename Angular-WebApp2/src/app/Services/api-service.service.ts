@@ -11,25 +11,19 @@ export class ApiServiceService {
 	//readonly ROOT_URL = 'http://localhost:8080';
 	posts: Observable<any>; //Added
 	constructor(private http: HttpClient) {}
-	/*
-Added
-*/
 
 	getPost(): Observable<any> {
 		// this.posts = this.http.get(this.ROOT_URL)
 		return this.http.get<any>(this.ROOT_URL + '/manufacturers');
 	}
 	updateManu(id, data): Observable<any> {
-		// this.posts = this.http.get(this.ROOT_URL)
-		//return this.http.put<any>("https://cors-anywhere.herokuapp.com/"+this.ROOT_URL+"/manufacturerupdate/"+id,data);
-		return this.http.put<any>(this.ROOT_URL + '/manufacturerupdate/' + id, data);
+		return this.http.put<any>(
+			'https://cors-anywhere.herokuapp.com/' + this.ROOT_URL + '/manufacturerupdate/' + id,
+			data
+		);
 	}
 	getPostByID(id: string): Observable<any> {
-		// this.posts = this.http.get(this.ROOT_URL)
 		return this.http.get<any>(this.ROOT_URL + '/manufacturers/' + id);
-	}
-	errorHandler(error: HttpErrorResponse) {
-		return Observable.throw(error.message || 'Server Error');
 	}
 	addManu(data) {
 		return this.http.post<any>(this.ROOT_URL + '/newmanufacturer', data, {

@@ -1,18 +1,40 @@
-footer{
-    clear: both; 
-    border: 1px solid;
-    text-align: center;
-    background-color: rgb(235, 230, 230);
-    margin-top: 5vw;
+footer {
+	clear: both;
+	border: 1px solid;
+	background-color: rgb(235, 230, 230);
+	margin-top: 3vw;
+	width: 75%;
+	margin: auto;
+	justify-content: center;
+	margin-bottom: 1vw;
 }
 #top {
-    cursor: pointer;
+	cursor: pointer;
 }
 #top:hover {
-    text-decoration: underline;
-    color: black;
+	text-decoration: underline;
+	color: black;
 }
 #top:active {
-    text-decoration: underline;
-    color: black;
+	text-decoration: underline;
+	color: black;
+	text-align: right;
+}
+p {
+	float: left;
+	padding-right: 1vw;
+}
+.text-uppercase {
+	/* float: left;
+	padding-right: 1vw; */
+}
+.floatright {
+	text-align: right;
+}
+.row p {
+	padding-right: 1vw;
+	padding-left: 1vw;
+}
+.row h5 {
+	padding-left: 1vw;
 }

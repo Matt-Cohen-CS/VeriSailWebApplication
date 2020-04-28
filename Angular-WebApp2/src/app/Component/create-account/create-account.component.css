@@ -1,26 +1,87 @@
 img {
-    mix-blend-mode: darken;
-    padding-bottom: 2vw;
-    margin: auto;
-    padding-left: 7vw;
+	mix-blend-mode: darken;
+	padding-bottom: 2vw;
+	margin: auto;
+	padding-left: 7vw;
 }
 p {
-    padding-top: 2vw;
-    text-align: center;
+	padding-top: 2vw;
+	text-align: center;
 }
 body {
-    width: 75%;
-    transform: translate(0%,30%);
-    margin: auto;
-    border-style: groove;
-    height: fit-content;
+	width: 75%;
+	transform: translate(0%, 30%);
+	margin: auto;
+	border-style: groove;
+	height: fit-content;
 }
 
-#float-left{
- 
- margin-bottom: 1vw;
- 
+#float-left {
+	margin-bottom: 1vw;
 }
 #float-left a {
-    padding: 2vw;
+	padding: 2vw;
+}
+
+.halfwidth {
+	width: 45%;
+	padding-left: 2vw;
+	text-align: left;
+}
+.fullwidth {
+	width: 90%;
+	padding-left: 2vw;
+	text-align: left;
+}
+.halfwidth1 {
+	width: 45%;
+	padding-left: 2vw;
+	text-align: left;
+	padding-right: 1vw;
+}
+#moveRight {
+	padding-left: 1vw;
+}
+/* 
+  Color of text inside form
+*/
+::ng-deep .mat-input-element {
+	color: black !important;
+}
+
+/* 
+  Color of label
+*/
+::ng-deep .mat-form-field-label {
+	color: rgba(0, 0, 0, 1) !important;
+}
+
+/* 
+  Color of border
+*/
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+	color: black !important;
+	opacity: .4 !important;
+}
+/* 
+  Color when form is focused
+*/
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+	color: green !important;
+}
+/* 
+  Color of label when theres an error
+*/
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+	color: red !important;
+}
+
+/* 
+  Color of border when theres an error
+*/
+::ng-deep
+	.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
+	.mat-form-field-outline-thick {
+	color: red !important;
+	opacity: 0.8 !important;
 }
