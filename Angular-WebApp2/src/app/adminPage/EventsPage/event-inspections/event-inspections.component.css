@@ -10,7 +10,7 @@ table {
 /*
 	MAIN table 
 */
-.form-container{
+.form-container {
 	overflow: scroll;
 }
 table th {
@@ -64,4 +64,8 @@ main {
 	main {
 		margin-right: 3.9vw;
 	}
+}
+mat-paginator {
+	display: flex;
+	justify-content: left;
 }

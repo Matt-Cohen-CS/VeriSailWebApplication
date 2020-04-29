@@ -50,3 +50,9 @@ body {
 		margin-top: 7rem;
 	}
 }
+/*
+	MAIN table 
+*/
+.form-container {
+	overflow: scroll;
+}
