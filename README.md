@@ -1,1 +1,1 @@
-# VeriSail This will be the Repository we will use for our application. Any questions just let me know.
+# VeriSail an administrative website to provide CRUD (Create, Read, Update and Delete) from an SQL database.
